@@ -23,5 +23,6 @@
         header("Location:panel.php");
     }else {
        header("location:../index.html");
+       
     } 
 ?>
