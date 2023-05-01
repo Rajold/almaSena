@@ -1,0 +1,5 @@
+.mainDiv {
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow:  1.3rem 1.3rem 1.3rem rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(250, 250, 250, 0.5);
+}
