@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
-  <!-- <link rel="stylesheet" href="../csss/bootstrap/css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="../csss/bootstrap/css/bootstrap.min.css">
   <title>Movimientos</title>
 </head>
@@ -64,74 +63,76 @@
       <!-- inicio formulario -->
       <form action="#" method="post">
         <div class="form-floating input-group mt-4">
-          <label for="mailInput" class="form-label px-5 bg-info">Código de Elemento</label>
-          <input class=" form-control bg-light" name="email" type="email" id="mailInput" placeholder="" />
+          <input class=" form-control bg-light" name="elmCode" type="text" id="codeInput" placeholder="" />
+          <label for="codeInput" class="form-label px-5">Código de Elemento</label>
         </div>
 
         <div class="form-floating input-group mt-4">
-          <label for="mailInput" class="form-label px-5">Nombre</label>
           <select class="form-select" name="elements" id="selectr">
-            <option value="1">Cabeza</option>
-            <option value="2">Ojos</option>
-            <option value="3">Oidos</option>
-            <option value="4">Respiratorio</option>
-            <option value="5">cuerpo</option>
-            <option value="6">Manos</option>
-            <option value="7">Pies</option>
+            <option value="1">Nombre de elemnto</option>
+            <option value="2">Botas Puntera</option>
+            <option value="3">Tapa</option>
+            <option value="4">Oidos</option>
+            <option value="5">Respiratorio</option>
+            <option value="6">cuerpo</option>
+            <option value="7">Manos</option>
+            <option value="8">Pies</option>
+          </select>
+          <!-- <label for="mailInput" class="form-label px-5">Nombre</label> -->
+        </div>
+
+        <div class="form-floating input-group mt-4">
+          <select class="form-select bg-light" name="elements" id="selectr">
+            <option value="1">Marca</option>
+            <option value="2">Cabeza</option>
+            <option value="3">Ojos</option>
+            <option value="4">Oidos</option>
+            <option value="5">Respiratorio</option>
+            <option value="6">cuerpo</option>
+            <option value="7">Manos</option>
+            <option value="8">Pies</option>
           </select>
         </div>
 
         <div class="form-floating input-group mt-4">
-          <label for="mailInput" class="form-label px-5">Marca</label>
           <select class="form-select" name="elements" id="selectr">
-            <option value="1">Cabeza</option>
-            <option value="2">Ojos</option>
-            <option value="3">Oidos</option>
-            <option value="4">Respiratorio</option>
-            <option value="5">cuerpo</option>
-            <option value="6">Manos</option>
-            <option value="7">Pies</option>
+            <option value="1">Talla</option>
+            <option value="2">Cabeza</option>
+            <option value="3">Ojos</option>
+            <option value="4">Oidos</option>
+            <option value="5">Respiratorio</option>
+            <option value="6">cuerpo</option>
+            <option value="7">Manos</option>
+            <option value="8">Pies</option>
           </select>
         </div>
 
         <div class="form-floating input-group mt-4">
-          <label for="mailInput" class="form-label px-5">Talla</label>
-          <select class="form-select" name="elements" id="selectr">
-            <option value="1">Cabeza</option>
-            <option value="2">Ojos</option>
-            <option value="3">Oidos</option>
-            <option value="4">Respiratorio</option>
-            <option value="5">cuerpo</option>
-            <option value="6">Manos</option>
-            <option value="7">Pies</option>
+          <select class="form-select bg-light" name="elements" id="selectr">
+            <option value="1">Color</option>
+            <option value="2">Cabeza</option>
+            <option value="3">Ojos</option>
+            <option value="4">Oidos</option>
+            <option value="5">Respiratorio</option>
+            <option value="6">cuerpo</option>
+            <option value="7">Manos</option>
+            <option value="8">Pies</option>
           </select>
         </div>
 
         <div class="form-floating input-group mt-4">
-          <label for="mailInput" class="form-label px-5">Color</label>
-          <select class="form-select" name="elements" id="selectr">
-            <option value="1">Cabeza</option>
-            <option value="2">Ojos</option>
-            <option value="3">Oidos</option>
-            <option value="4">Respiratorio</option>
-            <option value="5">cuerpo</option>
-            <option value="6">Manos</option>
-            <option value="7">Pies</option>
-          </select>
+          <input class=" form-control" name="cantidad" type="number" id="amount" placeholder="" />
+          <label for="amount" class="form-label px-5">Cantidad</label>
         </div>
 
         <div class="form-floating input-group mt-4">
-          <label for="mailInput" class="form-label px-5">Cantidad</label>
-          <input class=" form-control bg-light" name="email" type="email" id="mailInput" placeholder="" />
-        </div>
-
-        <div class="form-floating input-group mt-4">
-          <label for="obsrvn" class="form-label px-5">Observaciones</label>
           <textarea class=" form-control bg-light" name="obsrvn" type="text" id="obsrvn" placeholder=""></textarea>
+          <label for="obsrvn" class="form-label px-5">Observaciones</label>
         </div>
 
         <div>
-          <button class="btn btn-info text-white w-100 mt-4 fw-semibold shadow-sm" type="submit">Agregar a inventario</button>
+          <button class="btn btn-info text-white w-100 mt-4 fw-semibold shadow-sm" type="submit">Agregar a
+            inventario</button>
         </div>
 
       </form>
@@ -139,9 +140,7 @@
     </div>
   </div>
 
-  </div>
-
-
+  
 
 </body>
 
