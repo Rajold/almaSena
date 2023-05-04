@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-05-2023 a las 09:07:39
+-- Tiempo de generación: 04-05-2023 a las 08:25:38
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -29,7 +29,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `elementos` (
   `idElemento` int(11) NOT NULL,
-  `fkUsuario` int(50) NOT NULL,
   `elemento` varchar(50) NOT NULL,
   `marca` varchar(50) NOT NULL,
   `talla` varchar(10) NOT NULL,
@@ -83,6 +82,7 @@ CREATE TABLE `movimiento` (
 CREATE TABLE `usuarios` (
   `id` int(50) NOT NULL,
   `user` varchar(50) NOT NULL,
+  `idFicha` int(11) NOT NULL,
   `password` varchar(32) NOT NULL,
   `email` varchar(50) NOT NULL,
   `rol` varchar(10) NOT NULL
@@ -92,10 +92,10 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `user`, `password`, `email`, `rol`) VALUES
-(12265488, 'Max Power', '4388', 'jafajardo8845@soy.sena.edu.co', 'admin'),
-(12265489, 'Sandra ', '1234', 'sandra@soy.sena.edu.co', 'user'),
-(12265490, 'felipita jaramiloo', '', 'felipita@soy.sena.edu.co', 'user');
+INSERT INTO `usuarios` (`id`, `user`, `idFicha`, `password`, `email`, `rol`) VALUES
+(12265488, 'Max Power', 0, '4388', 'jafajardo8845@soy.sena.edu.co', 'admin'),
+(12265489, 'Sandra ', 0, '1234', 'sandra@soy.sena.edu.co', 'user'),
+(12265490, 'felipita jaramiloo', 0, '12345', 'felipita@soy.sena.edu.co', '');
 
 --
 -- Índices para tablas volcadas
@@ -105,8 +105,7 @@ INSERT INTO `usuarios` (`id`, `user`, `password`, `email`, `rol`) VALUES
 -- Indices de la tabla `elementos`
 --
 ALTER TABLE `elementos`
-  ADD PRIMARY KEY (`idElemento`),
-  ADD KEY `fkUsuario` (`fkUsuario`);
+  ADD PRIMARY KEY (`idElemento`);
 
 --
 -- Indices de la tabla `existencias`
