@@ -1,5 +1,6 @@
 <?php
-    include('./dbConection.php');
+    session_start();
+    include("./dbConection.php");
 
     $usrId=                 $_POST['dni'];
     $usrName=               $_POST['uname'];
