@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-05-2023 a las 08:25:38
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 12-05-2023 a las 23:48:12
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `elementos` (
   `idElemento` int(11) NOT NULL,
+  `idTipo` int(10) NOT NULL,
   `elemento` varchar(50) NOT NULL,
   `marca` varchar(50) NOT NULL,
   `talla` varchar(10) NOT NULL,
@@ -36,29 +37,6 @@ CREATE TABLE `elementos` (
   `existencias` int(10) NOT NULL,
   `obsevacion` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `existencias`
---
-
-CREATE TABLE `existencias` (
-  `codigo` int(11) NOT NULL,
-  `articulo` varchar(50) NOT NULL,
-  `marca` varchar(50) NOT NULL,
-  `talla` int(10) NOT NULL,
-  `color` varchar(10) NOT NULL,
-  `cantidad` int(7) NOT NULL,
-  `observacion` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `existencias`
---
-
-INSERT INTO `existencias` (`codigo`, `articulo`, `marca`, `talla`, `color`, `cantidad`, `observacion`) VALUES
-(1, 'botas', 'brahma', 40, 'café', 59, 'Producto descontinuado.');
 
 -- --------------------------------------------------------
 
@@ -72,6 +50,42 @@ CREATE TABLE `movimiento` (
   `tomador` int(50) NOT NULL,
   `elemento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tallas`
+--
+
+CREATE TABLE `tallas` (
+  `idta` int(11) NOT NULL,
+  `tallas` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tallas`
+--
+
+INSERT INTO `tallas` (`idta`, `tallas`) VALUES
+(2, 's'),
+(3, 'm'),
+(4, 'l'),
+(5, 'xl'),
+(6, '30'),
+(7, '31'),
+(8, '32'),
+(9, '33'),
+(10, '34'),
+(11, '35'),
+(12, '36'),
+(13, '37'),
+(14, '38'),
+(15, '39'),
+(16, '40'),
+(17, '41'),
+(18, '42'),
+(19, '43'),
+(20, '44');
 
 -- --------------------------------------------------------
 
@@ -93,7 +107,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `user`, `idFicha`, `password`, `email`, `rol`) VALUES
-(12265488, 'Max Power', 0, '4388', 'jafajardo8845@soy.sena.edu.co', 'admin'),
+(12265488, 'Max Power', 2451009, '4388', 'jafajardo8845@soy.sena.edu.co', 'admin'),
 (12265489, 'Sandra ', 0, '1234', 'sandra@soy.sena.edu.co', 'user'),
 (12265490, 'felipita jaramiloo', 0, '12345', 'felipita@soy.sena.edu.co', '');
 
@@ -105,13 +119,8 @@ INSERT INTO `usuarios` (`id`, `user`, `idFicha`, `password`, `email`, `rol`) VAL
 -- Indices de la tabla `elementos`
 --
 ALTER TABLE `elementos`
-  ADD PRIMARY KEY (`idElemento`);
-
---
--- Indices de la tabla `existencias`
---
-ALTER TABLE `existencias`
-  ADD PRIMARY KEY (`codigo`);
+  ADD PRIMARY KEY (`idElemento`),
+  ADD KEY `idTipo` (`idTipo`);
 
 --
 -- Indices de la tabla `movimiento`
@@ -121,6 +130,12 @@ ALTER TABLE `movimiento`
   ADD KEY `tomador` (`tomador`),
   ADD KEY `elemento` (`elemento`),
   ADD KEY `elemento_2` (`elemento`);
+
+--
+-- Indices de la tabla `tallas`
+--
+ALTER TABLE `tallas`
+  ADD PRIMARY KEY (`idta`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -139,20 +154,26 @@ ALTER TABLE `elementos`
   MODIFY `idElemento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `existencias`
---
-ALTER TABLE `existencias`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT de la tabla `movimiento`
 --
 ALTER TABLE `movimiento`
   MODIFY `idMovimiento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `tallas`
+--
+ALTER TABLE `tallas`
+  MODIFY `idta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `elementos`
+--
+ALTER TABLE `elementos`
+  ADD CONSTRAINT `elementos_ibfk_1` FOREIGN KEY (`idTipo`) REFERENCES `tallas` (`idta`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `movimiento`
