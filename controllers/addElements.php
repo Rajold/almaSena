@@ -2,12 +2,18 @@
     session_start();
     include("./dbConection.php");
 
-    // $categoria= $_POST['category'];
-    $categoria= 'cabeza';
-    // echo $categoria;
+    $elementName=               $_POST['elements'];
+    $elementMarc=               $_POST['elementoMarca'];
+    $elementSize=               $_POST['elementoTalla'];
+    $elementColor=              $_POST['elementoColor'];
+    $elementAmount=             $_POST['elementoCantidad'];
+    $elementNote=               $_POST['elementoNota'];
+
+    
+   
 
 
-    $sql= "SELECT * FROM elementos WHERE categoria= '$categoria' ";
+    /* $sql= "SELECT * FROM elementos WHERE categoria= '$categoria' ";
 
     $resultado= mysqli_query($conexion, $sql);
     // var_dump($resultado);
@@ -51,5 +57,5 @@
 
     mysqli_query($conexion, $query);
     // echo "Usuario creado."
-    header("Location:../index.html"); */
+    header("Location:../index.html"); */ 
 ?>

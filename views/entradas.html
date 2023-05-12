@@ -10,7 +10,7 @@
   <title>Movimientos</title>
 </head>
 
-<body>
+<body class="vh-100">
   <div class="container">
     <div class="row">
       <div class="col-11">
@@ -34,119 +34,118 @@
         </div>
       </div>
     </div>
-  </div>
+
+    <div class="container-fluid d-flex justify-content-center align-items-center input-group mb-3">
+      <div class="mb-3 input-group-prepend">
+        <span class="bg-danger text-white p-2 rounded" for="selectr" type="text">Para agregar elementos a inventario por
+          favor rellene los siguientes campos.</span>
+      </div>
+    </div>
 
 
-  <div class="container-fluid d-flex justify-content-center align-items-center input-group mb-3">
-    <div class="mb-3 input-group-prepend">
-      <span class="bg-danger text-white p-2 rounded" for="selectr" type="text">Para agregar elementos a inventario por favor rellene los siguientes campos.</span>
 
-      
+    <div class="d-flex justify-content-center align-items-center">
+      <div class=" p-5 rounded-5 text-secondary shadow" style="width: 50rem">
+        <!-- inicio formulario -->
+        <form action="../controllers/addElements.php" method="post">
+
+          <!-- Nombre de elemento -->
+          <div class="input-group mt-4">
+            <label for="selectr" class="form-label pe-5">Nombre</label>
+            <select class="form-select" name="elementoNombre" id="selectr" required>
+              <option value="0">Nombre de elemento</option>
+              <option value="BATA DESECHABLE">BATA DESECHABLE</option>
+              <option value="BOLSA PLASTICA BASURA">BOLSA PLASTICA BASURA</option>
+              <option value="4">BOTAS DE TRABAJO</option>
+              <option value="5">CARETA GUADAÑAR</option>
+              <option value="6">CARETA VETERINARIA</option>
+              <option value="5">CARTUCHO QUIMICO</option>
+              <option value="7">CASCO</option>
+              <option value="8">CHALECO REFLECTIVO NARANJA</option>
+              <option value="9">COFIA</option>
+              <option value="10">DELANTAL DE HULE</option>
+              <option value="11">FILTRO MASCARA</option>
+              <option value="2">GAFAS LABORATORIO</option>
+              <option value="3">GAFAS SEGURIDAD</option>
+              <option value="4">GORRO TIPO MALLA</option>
+              <option value="5">GUANTE CARNAZA</option>
+              <option value="6">GUANTE CAUCHO LARGO</option>
+              <option value="5">GUANTES DE EXAMEN</option>
+              <option value="7">GUANTES MOSQUETERO</option>
+              <option value="8">GUANTES QUIRURGICOS</option>
+              <option value="9">GUANTES VETERINARIO</option>
+            </select>
+          </div>
+
+          <!-- Marca -->
+          <div class="input-group mt-4">
+            <label class=" pe-5" for="selectr">Marca del elemento</label>
+            <input class=" bg-light" name="elementoMarca" id="selectr" required>
+          </div>
+
+          <!-- Talla -->
+          <div class="input-group mt-4">
+            <label class=" pe-5" for="">Talla</label>
+            <select class="form-select" name="elementoTalla" id="selectr" required>
+              <option value="1">N/A</option>
+              <option class="bg-secondary" value="2">S</option>
+              <option class="bg-secondary" value="3">M</option>
+              <option class="bg-secondary" value="4">L</option>
+              <option class="bg-secondary" value="5">XL</option>
+              <option value="6">7</option>
+              <option value="7">8</option>
+              <option value="8">9</option>
+              <OPTION value="9">10</OPTION>
+              <option class="bg-secondary" value="10">36</option>
+              <option class="bg-secondary" value="11">37</option>
+              <option class="bg-secondary" value="12">38</option>
+              <option class="bg-secondary" value="13">39</option>
+              <option class="bg-secondary" value="14">40</option>
+              <option class="bg-secondary" value="15">41</option>
+              <option class="bg-secondary" value="16">42</option>
+              <option class="bg-secondary" value="17">43</option>
+            </select>
+          </div>
+
+          <!-- Color -->
+          <div class="input-group mt-4">
+            <label class=" pe-5" for="">Color</label>
+            <select class="form-select bg-light" name="elementoColor" id="selectr" required>
+              <option value="1">Color</option>
+              <option value="2">Amarillo</option>
+              <option value="3">Azul</option>
+              <option value="4">Rojo</option>
+              <option value="5">Verde</option>
+              <option value="6">Violeta</option>
+              <option value="7">Naranja</option>
+              <option value="8">Café</option>
+              <option value="9">Gris</option>
+              <option value="10">Negro</option>
+            </select>
+          </div>
+
+          <div class="input-group mt-4">
+            <label for="amount" class="form-label pe-5">Cantidad</label>
+            <input class=" form-control" name="elementoCantidad" type="number" id="amount" placeholder="" required/>
+          </div>
+
+          <div class="form-floating input-group mt-4">
+            <textarea class=" form-control bg-light" name="elementoNota" type="text" id="obsrvn" placeholder=""></textarea>
+            <label for="obsrvn" class="form-label px-5">Observaciones</label>
+          </div>
+
+          <div>
+            <button class="btn btn-info text-white w-100 mt-4 fw-semibold shadow-sm" type="submit">Agregar a
+              inventario</button>
+          </div>
+
+        </form>
+        <!-- fin de formulario -->
+      </div>
     </div>
   </div>
 
 
-
-  <div class="d-flex justify-content-center align-items-center vh-100">
-    <div class=" p-5 rounded-5 text-secondary shadow" style="width: 50rem">
-
-      <!-- inicio formulario -->
-      <form action="../controllers/addElements.php" method="post">
-        <div class="form-floating input-group mt-4">
-          <!-- size="3" para tipo scroll bar-->
-          <select class="form-select" name="category" id="selectr">
-            <option value="1">Cabeza</option>
-            <option value="2">Visual</option>
-            <option value="3">Auditivo</option>
-            <option value="4">Respiratorio</option>
-            <option value="5">cuerpo</option>
-            <option value="6">Manos</option>
-            <option value="7">Pies</option>
-          </select>
-              <label for="codeInput" class="form-label px-5">Tipo de protección.</label>
-        </div>
-
-       
-
-
-
-
-
-
-        <div class="form-floating input-group mt-4">
-          <select class="form-select" name="elements" id="selectr">
-            <option value="1">Nombre de elemnto</option>
-            <option value="2">Botas Puntera</option>
-            <option value="3">Tapa</option>
-            <option value="4">Oidos</option>
-            <option value="5">Respiratorio</option>
-            <option value="6">cuerpo</option>
-            <option value="7">Manos</option>
-            <option value="8">Pies</option>
-          </select>
-          <!-- <label for="mailInput" class="form-label px-5">Nombre</label> -->
-        </div>
-
-        <div class="form-floating input-group mt-4">
-          <select class="form-select bg-light" name="elements" id="selectr">
-            <option value="1">Marca</option>
-            <option value="2">Cabeza</option>
-            <option value="3">Ojos</option>
-            <option value="4">Oidos</option>
-            <option value="5">Respiratorio</option>
-            <option value="6">cuerpo</option>
-            <option value="7">Manos</option>
-            <option value="8">Pies</option>
-          </select>
-        </div>
-
-        <div class="form-floating input-group mt-4">
-          <select class="form-select" name="elements" id="selectr">
-            <option value="1">Talla</option>
-            <option value="2">Cabeza</option>
-            <option value="3">Ojos</option>
-            <option value="4">Oidos</option>
-            <option value="5">Respiratorio</option>
-            <option value="6">cuerpo</option>
-            <option value="7">Manos</option>
-            <option value="8">Pies</option>
-          </select>
-        </div>
-
-        <div class="form-floating input-group mt-4">
-          <select class="form-select bg-light" name="elements" id="selectr">
-            <option value="1">Color</option>
-            <option value="2">Cabeza</option>
-            <option value="3">Ojos</option>
-            <option value="4">Oidos</option>
-            <option value="5">Respiratorio</option>
-            <option value="6">cuerpo</option>
-            <option value="7">Manos</option>
-            <option value="8">Pies</option>
-          </select>
-        </div>
-
-        <div class="form-floating input-group mt-4">
-          <input class=" form-control" name="cantidad" type="number" id="amount" placeholder="" />
-          <label for="amount" class="form-label px-5">Cantidad</label>
-        </div>
-
-        <div class="form-floating input-group mt-4">
-          <textarea class=" form-control bg-light" name="obsrvn" type="text" id="obsrvn" placeholder=""></textarea>
-          <label for="obsrvn" class="form-label px-5">Observaciones</label>
-        </div>
-
-        <div>
-          <button class="btn btn-info text-white w-100 mt-4 fw-semibold shadow-sm" type="submit">Agregar a
-            inventario</button>
-        </div>
-
-      </form>
-      <!-- fin de formulario -->
-    </div>
-  </div>
-
-  
 
 </body>
 
