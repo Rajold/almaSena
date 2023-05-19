@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-05-2023 a las 23:48:12
+-- Tiempo de generación: 19-05-2023 a las 18:47:54
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -24,19 +24,51 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `categorias`
+--
+
+CREATE TABLE `categorias` (
+  `idCategoria` int(11) NOT NULL,
+  `nombreCat` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`idCategoria`, `nombreCat`) VALUES
+(1, 'cabeza'),
+(2, 'visual'),
+(3, 'auditivo'),
+(4, 'respiratorio'),
+(5, 'prendas'),
+(6, 'calzado');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `elementos`
 --
 
 CREATE TABLE `elementos` (
   `idElemento` int(11) NOT NULL,
-  `idTipo` int(10) NOT NULL,
+  `fkCategoria` int(11) NOT NULL,
+  `fkTalla` int(10) NOT NULL,
   `elemento` varchar(50) NOT NULL,
   `marca` varchar(50) NOT NULL,
-  `talla` varchar(10) NOT NULL,
   `color` varchar(10) NOT NULL,
   `existencias` int(10) NOT NULL,
   `obsevacion` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `elementos`
+--
+
+INSERT INTO `elementos` (`idElemento`, `fkCategoria`, `fkTalla`, `elemento`, `marca`, `color`, `existencias`, `obsevacion`) VALUES
+(1, 3, 21, 'Tapa oidos de inserción', 'Sosega', 'Amarillo', 200, 'De los nuevos'),
+(2, 3, 21, 'Tapa oidos tipo copa', 'Sosega', 'varios', 100, 'Color es irrelevante.'),
+(3, 2, 21, 'monogafas', 'sosega', 'negro', 200, 'Modelo nuevo');
 
 -- --------------------------------------------------------
 
@@ -58,7 +90,7 @@ CREATE TABLE `movimiento` (
 --
 
 CREATE TABLE `tallas` (
-  `idta` int(11) NOT NULL,
+  `idTalla` int(11) NOT NULL,
   `tallas` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -66,7 +98,7 @@ CREATE TABLE `tallas` (
 -- Volcado de datos para la tabla `tallas`
 --
 
-INSERT INTO `tallas` (`idta`, `tallas`) VALUES
+INSERT INTO `tallas` (`idTalla`, `tallas`) VALUES
 (2, 's'),
 (3, 'm'),
 (4, 'l'),
@@ -85,7 +117,8 @@ INSERT INTO `tallas` (`idta`, `tallas`) VALUES
 (17, '41'),
 (18, '42'),
 (19, '43'),
-(20, '44');
+(20, '44'),
+(21, 'na');
 
 -- --------------------------------------------------------
 
@@ -107,20 +140,27 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `user`, `idFicha`, `password`, `email`, `rol`) VALUES
+(0, '', 0, '', '', 'user'),
 (12265488, 'Max Power', 2451009, '4388', 'jafajardo8845@soy.sena.edu.co', 'admin'),
-(12265489, 'Sandra ', 0, '1234', 'sandra@soy.sena.edu.co', 'user'),
-(12265490, 'felipita jaramiloo', 0, '12345', 'felipita@soy.sena.edu.co', '');
+(12265489, 'Sandra ', 0, '1234', 'sandra@soy.sena.edu.co', 'user');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
+-- Indices de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`idCategoria`);
+
+--
 -- Indices de la tabla `elementos`
 --
 ALTER TABLE `elementos`
   ADD PRIMARY KEY (`idElemento`),
-  ADD KEY `idTipo` (`idTipo`);
+  ADD KEY `idTipo` (`fkTalla`),
+  ADD KEY `fkCategoria` (`fkCategoria`);
 
 --
 -- Indices de la tabla `movimiento`
@@ -135,7 +175,7 @@ ALTER TABLE `movimiento`
 -- Indices de la tabla `tallas`
 --
 ALTER TABLE `tallas`
-  ADD PRIMARY KEY (`idta`);
+  ADD PRIMARY KEY (`idTalla`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -148,10 +188,16 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT de la tabla `elementos`
 --
 ALTER TABLE `elementos`
-  MODIFY `idElemento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idElemento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `movimiento`
@@ -163,7 +209,7 @@ ALTER TABLE `movimiento`
 -- AUTO_INCREMENT de la tabla `tallas`
 --
 ALTER TABLE `tallas`
-  MODIFY `idta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `idTalla` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Restricciones para tablas volcadas
@@ -173,7 +219,8 @@ ALTER TABLE `tallas`
 -- Filtros para la tabla `elementos`
 --
 ALTER TABLE `elementos`
-  ADD CONSTRAINT `elementos_ibfk_1` FOREIGN KEY (`idTipo`) REFERENCES `tallas` (`idta`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `elementos_ibfk_1` FOREIGN KEY (`fkTalla`) REFERENCES `tallas` (`idTalla`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `elementos_ibfk_2` FOREIGN KEY (`fkCategoria`) REFERENCES `categorias` (`idCategoria`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `movimiento`

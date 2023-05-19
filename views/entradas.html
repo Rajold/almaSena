@@ -11,6 +11,8 @@
 </head>
 
 <body class="vh-100">
+
+  <!-- Tabs-Pestañas  -->
   <div class="container">
     <div class="row">
       <div class="col-11">
@@ -26,6 +28,8 @@
           </li>
         </ul>
       </div>
+
+      <!-- Salir-LogOut -->
       <div class="col-1">
         <div>
           <button class="btn btn-danger w-100 mt-4 shadow-sm "><a class="text-decoration-none text-white"
@@ -35,6 +39,7 @@
       </div>
     </div>
 
+    <!-- Título-Title -->
     <div class="container-fluid d-flex justify-content-center align-items-center input-group mb-3">
       <div class="mb-3 input-group-prepend">
         <span class="bg-danger text-white p-2 rounded" for="selectr" type="text">Para agregar elementos a inventario por
@@ -43,17 +48,22 @@
     </div>
 
 
-
+<!-- Contenedor principal-Main container -->
     <div class="d-flex justify-content-center align-items-center">
       <div class=" p-5 rounded-5 text-secondary shadow" style="width: 50rem">
         <!-- inicio formulario -->
         <form action="../controllers/addElements.php" method="post">
 
           <div class="input-group mt-4">
-            <label for="elementoTipo">Tipo de elmento</label>
+            <label class="pe-5" for="elementoTipo">Tipo de elmento</label>
             <select class="form-select pe-5" name="elementoTipo" id="elementoTipo">
-              <option value="Calzado">Calzado</option>
-              <option value="Prendas">Prendas</option>
+              <option value="Elija uno">Elija el tipo de protección</option>
+              <option value="1">Protección de la cabeza</option>
+              <option value="2">Protección visual</option>
+              <option value="3">Protección auditiva</option>
+              <option value="4">Respiratorio</option>
+              <option value="5">Prendas</option>
+              <option value="6">Calzado</option>
             </select>
           </div>
 
