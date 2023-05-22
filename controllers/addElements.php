@@ -36,5 +36,6 @@
 
    var_dump($elemId_db);
    var_dump($elemCat_db);
+   var_dump($catName_db);
 
 ?>

@@ -14,13 +14,20 @@
 style="background-image: url('../assets/userBackGround2.jpg'); height: 100vh">
     <div class="bg-white p-5 rounded-5 text-secondary shadow" style="width: 40rem">
         <div class="d-flex justify-content-center">
-            <img src="../assets/login-icon.svg" alt="login-icon" style="height: 7rem" />
+            <img src="../assets/login-icon.svg" alt="login-icon" style="height: 4rem" />
         </div>
+
+        
+
+        <!-- inicio formulario -->
+        <form action="" method="post">
 
         <div class="text-center fs-1 fw-bold">Registrar Usuario</div>
 
-        <!-- inicio formulario -->
-        <form action="../controllers/register.php" method="post">
+        <?php
+        include("../controllers/dbConection.php");
+        include("../controllers/register.php");
+        ?>
             <div class="form-floating input-group mt-4">
                 <div class="input-group-text bg-info">
                     <img src="../assets/username-icon.svg" alt="username-icon" style="height: 1rem" />
@@ -58,11 +65,27 @@ style="background-image: url('../assets/userBackGround2.jpg'); height: 100vh">
                 <label for="exampleInputPassword1" class="form-label px-5">Confirmar Contraseña</label>
             </div>
             <div>
-                <button class="btn btn-info text-white w-100 mt-2 fw-semibold shadow-sm" type="submit">Registrar</button>
+                <input name="dataSend" class="btn btn-info text-white w-100 mt-2 fw-semibold shadow-sm" 
+                type="submit" value="REGISTRAR USUARIO">
             </div>
         </form>
         <!-- fin de formulario -->
+
+        <!-- Volver al inicio - Go home -->
+        <div>
+            <a href="../index.php" class="text-decoration-none text-success fw-semibold">Volver al inicio</a>
+        </div>
     </div>
+
+    <script>
+    //Autoclose
+   window.setTimeout(function() {
+    $(".alert").fadeTo(2500, 0).slideDown(1000, function(){
+        $(this).remove(); 
+    });
+   }, 1000); //2 segundos y desaparece
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>
 
 </html>

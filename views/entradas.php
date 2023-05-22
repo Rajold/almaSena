@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (empty($_SESSION['id'])) {
+  header("Location:../index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -8,10 +14,33 @@
   <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="../csss/bootstrap/css/bootstrap.min.css">
   <title>Movimientos</title>
+
+  <script>
+    function showDiv1() {
+      document.getElementById('div1').style.display = '';
+      document.getElementById('div2').style.display = 'none';
+      document.getElementById('div3').style.display = 'none';
+    }
+
+    function showDiv2() {
+      document.getElementById('div1').style.display = 'none';
+      document.getElementById('div2').style.display = '';
+      document.getElementById('div3').style.display = 'none';
+    }
+    function showDiv3() {
+      document.getElementById('div1').style.display = 'none';
+      document.getElementById('div2').style.display = 'none';
+      document.getElementById('div3').style.display = '';
+    }
+  </script>
 </head>
 
 <body class="vh-100">
-
+  <div class="userName">
+    <?php 
+    echo $_SESSION["nombre"]
+    ?>
+  </div>
   <!-- Tabs-Pestañas  -->
   <div class="container">
     <div class="row">
@@ -48,19 +77,19 @@
     </div>
 
 
-<!-- Contenedor principal-Main container -->
+    <!-- Contenedor formulario -Form container -->
     <div class="d-flex justify-content-center align-items-center">
       <div class=" p-5 rounded-5 text-secondary shadow" style="width: 50rem">
         <!-- inicio formulario -->
         <form action="../controllers/addElements.php" method="post">
 
-          <div class="input-group mt-4">
+          <div class="input-group">
             <label class="pe-5" for="elementoTipo">Tipo de elmento</label>
             <select class="form-select pe-5" name="elementoTipo" id="elementoTipo">
               <option value="Elija uno">Elija el tipo de protección</option>
-              <option value="1">Protección de la cabeza</option>
-              <option value="2">Protección visual</option>
-              <option value="3">Protección auditiva</option>
+              <option value="1" onclick="showDiv1()">Protección de la cabeza</option>
+              <option value="2" onclick="showDiv2()">Protección visual</option>
+              <option value="3" onclick="showDiv3()">Protección auditiva</option>
               <option value="4">Respiratorio</option>
               <option value="5">Prendas</option>
               <option value="6">Calzado</option>
@@ -144,11 +173,12 @@
 
           <div class="input-group mt-4">
             <label for="amount" class="form-label pe-5">Cantidad</label>
-            <input class=" form-control" name="elementoCantidad" type="number" id="amount" placeholder="" required/>
+            <input class=" form-control" name="elementoCantidad" type="number" id="amount" placeholder="" required />
           </div>
 
           <div class="form-floating input-group mt-4">
-            <textarea class=" form-control bg-light" name="elementoNota" type="text" id="obsrvn" placeholder=""></textarea>
+            <textarea class=" form-control bg-light" name="elementoNota" type="text" id="obsrvn"
+              placeholder=""></textarea>
             <label for="obsrvn" class="form-label px-5">Observaciones</label>
           </div>
 
@@ -158,6 +188,24 @@
           </div>
 
         </form>
+
+        <div class="div1" id="div1" style="display: none">
+          Seguro para perros<br>
+          Seguro1 <br>
+          Seguro2<br>
+          Seguro3
+        </div>
+        <div class="div2" id="div2" style="display: none">
+          Seguro para gatos<br>
+          Seguro1 <br>
+          Seguro no ole!<br>
+          Seguro3
+        </div>
+        <div class="div3" id="div3" style="display: none">
+          Seguro que si otros<br>
+          Segurolas Sam <br>
+          Seguro3
+        </div>
         <!-- fin de formulario -->
       </div>
     </div>

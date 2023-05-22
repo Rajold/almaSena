@@ -1,28 +1,30 @@
 <?php
-    session_start();
-    include("./dbConection.php");
+session_start();
+    if (!empty($_POST["btnLogin"])) {
+        if (empty($_POST["email"]) 
+         || empty($_POST["password"]))
+          { 
+        echo '<div class="alert alert-danger text-center role="alert" id="empty" alert-dismissible">Debe rellenar <strong>TODOS</strong> los campos
+        </div>';
+        } else {
+                $inputMail=               $_POST['email'];
+                $inputPass=           md5($_POST['password']);
+    
+                $sql=$conexion->query("SELECT * FROM usuarios WHERE email= '$inputMail' AND password= '$inputPass'");
+                if ($userData= $sql->fetch_object()) {
+                    $_SESSION["id"]=$userData->id;
+                    $_SESSION["nombre"]=$userData->user;
+                    $_SESSION ['rol'] = $userData->rol;
+                     header("Location:./controllers/panel.php");
+                } else {
+                    echo '<div class="alert alert-danger text-center role="alert"  alert-dismissible"><strong>Acceso denegado</strong></div>';
+                }
+                
 
-    $correo= $_POST['email'];
-    $contrasena= $_POST['password'];
-
-    $sql= "SELECT * FROM usuarios WHERE email= '$correo' AND password= '$contrasena'";
-
-    $resultado= mysqli_query($conexion, $sql);
-    //var_dump($result);
-    //var_dump($result->num_rows);
-
-    while($row= mysqli_fetch_array($resultado)) {
-        $usuario_db=    $row['user'];
-        $password_db=   $row['password'];
-        $rol_db=        $row['rol'];
+                
+            
+        }
+        
     }
-
-    if($resultado->num_rows> 0) {
-        $_SESSION ['usuario'] = $usuario;
-        $_SESSION ['rol'] = $rol_db;
-        header("Location:panel.php");
-    }else {
-       header("location:../index.html");
-       
-    } 
+    
 ?>
