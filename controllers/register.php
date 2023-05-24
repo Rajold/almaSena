@@ -6,13 +6,14 @@ if (!empty($_POST["dataSend"])) {
      || empty($_POST["dni"]) 
      || empty($_POST["email"]) 
      || empty($_POST["pass"])) { 
-    echo '<div class="alert alert-danger text-center role="alert" id="empty" alert-dismissible">Debe rellenar <strong>TODOS</strong> los campos
+    echo '<div class="alert alert-danger text-center role="alert" id="empty" alert-dismissible">
+    Debe rellenar <strong>TODOS</strong> los campos
     </div>';
     
     
     } else {
         if ($_POST['pass'] != $_POST['passConf']) {
-            echo '<div class="alert alert-danger text-center" id="match">Las contraseñas deben ser iguales bobo!</div>';
+            echo '<div class="alert alert-danger text-center" id="match">Las contraseñas no coinciden!</div>';
         }else {
 
             $usrName=               $_POST['uname'];

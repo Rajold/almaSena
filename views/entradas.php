@@ -16,24 +16,6 @@ if (empty($_SESSION['id'])) {
   <link rel="stylesheet" href="../csss/bootstrap/css/bootstrap.min.css">
   <title>Movimientos</title>
 
-  <script>
-    function showDiv1() {
-      document.getElementById('div1').style.display = '';
-      document.getElementById('div2').style.display = 'none';
-      document.getElementById('div3').style.display = 'none';
-    }
-
-    function showDiv2() {
-      document.getElementById('div1').style.display = 'none';
-      document.getElementById('div2').style.display = '';
-      document.getElementById('div3').style.display = 'none';
-    }
-    function showDiv3() {
-      document.getElementById('div1').style.display = 'none';
-      document.getElementById('div2').style.display = 'none';
-      document.getElementById('div3').style.display = '';
-    }
-  </script>
 </head>
 
 <body class="vh-100">
@@ -90,7 +72,7 @@ if (empty($_SESSION['id'])) {
 
 <form action="" method="post">
 		<div class="input-group mb-3">
-			<span class="input-group-text bg-success-subtle border-primary" id="">Categoría</span>
+			<span class="input-group-text bg-success-subtle border-primary" id="">Categoría></span>
 			<select class="form-select pe-5 border-primary" name="elemTipo" id="">
               <option value="Elija uno"></option>
               <option value="1" onclick="showDiv1()">Protección de la cabeza</option>
@@ -103,22 +85,22 @@ if (empty($_SESSION['id'])) {
 		</div>
 
 		<div class="input-group mb-3">
-			<span class="input-group-text bg-success-subtle border-primary" id="">Nombre</span>
+			<span class="input-group-text bg-success-subtle border-primary" id="">Nombre></span>
 			<input 	type="text" class="form-control border-primary" name="nombre" placeholder="del elemento"
 					aria-label="Nombre del elemento" aria-describedby="basic-addon2">
 		</div>
 
 		<div class="input-group mb-3">
-			<span class="input-group-text bg-success-subtle border-primary"  id="">Talla</span>
+			<span class="input-group-text bg-success-subtle border-primary"  id="">Talla></span>
 			<input type="text" class="form-control border-primary" name="talla" id="basic-url">
-			<span class="input-group-text bg-success-subtle border-primary">Marca</span>
+			<span class="input-group-text bg-success-subtle border-primary">Marca></span>
 			<input type="text" class="form-control border-primary" name="marca">
 		</div>
 
 		<div class="input-group mb-3">	
-			<span class="input-group-text bg-success-subtle border-primary">Color</span>
+			<span class="input-group-text bg-success-subtle border-primary">Color></span>
 			<input type="text" class="form-control border-primary" name="color" >
-			<span class="input-group-text bg-success-subtle border-primary">Existencias</span>
+			<span class="input-group-text bg-success-subtle border-primary">Existencias></span>
 			<input type="text" class="form-control border-primary" name="exist" >
 		</div>
 
@@ -150,11 +132,11 @@ if (empty($_SESSION['id'])) {
 			</thead>
 <tbody>
 	<?php
-		$sqlElm= $conexion->query("SELECT * FROM elementos");
+		$sqlElm= $conexion->query("SELECT * FROM elementos as e, categorias as c where e.fkCategoria=c.idCategoria");
 		while($tableData= $sqlElm->fetch_object()) {
 			?>
 			<tr>
-				<td><?= $tableData->fkCategoria?></td>
+				<td><?= $tableData->nombreCat?></td>
 				<td><?= $tableData->elemento?></td>
 				<td><?= $tableData->fkTalla?></td>
 				<td><?= $tableData->marca?></td>
@@ -162,13 +144,7 @@ if (empty($_SESSION['id'])) {
 				<td><?= $tableData->existencias?></td>
 				<td><?= $tableData->observacion?></td>
 				<td>
-				<a class="btn btn-small btn-success" name="btnAdd" href=""><svg
-						xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-						class="bi bi-file-plus-fill" viewBox="0 0 16 16">
-						<path
-							d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z" />
-					</svg>
-				</a>
+				
 				<a class="btn btn-small btn-warning" name="btnEdit" href=""><svg
 						xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 						class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -187,15 +163,7 @@ if (empty($_SESSION['id'])) {
 							d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
 					</svg>
 				</a>
-				<a class="btn btn-small btn-primary" name="btnUpdt" href=""><svg
-						xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-						class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-						<path fill-rule="evenodd"
-							d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
-						<path
-							d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
-					</svg>
-				</a>
+				
 
 				</td>
 			</tr>
@@ -219,7 +187,7 @@ if (empty($_SESSION['id'])) {
     $(".alert").fadeTo(2500, 0).slideDown(1000, function(){
         $(this).remove(); 
     });
-   }, 3000); //3 segundos y desaparece
+   }, 2000); //2 segundos y desaparece
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 

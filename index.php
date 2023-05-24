@@ -48,7 +48,7 @@
                 </div>
                 <div class="pt-1">
                     <a href="#" class="text-decoration-none text-info fw-semibold fst-italic"
-                        style="font-size: 0.9rem">Ya perdió la contraseña?</a>
+                        style="font-size: 0.9rem">Perdió su contraseña?</a>
                 </div>
             </div>
             
@@ -59,7 +59,7 @@
             
             <div class="d-flex gap-1 justify-content-center mt-1">
                 <div>No está registrado?</div>
-                <a href="./views/registro.php" class="text-decoration-none text-info fw-semibold">Regístrese pues</a>
+                <a href="./views/registro.php" class="text-decoration-none text-info fw-semibold">Regístrese aquí.</a>
             </div>
         </form>
         <!-- fin de formulario -->

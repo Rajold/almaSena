@@ -19,14 +19,13 @@ if (!empty($_POST['btnAdd'])) {
         $sql= $conexion->query ("insert into elementos (fkCategoria, fkTalla, elemento, marca, color, existencias, observacion)
         values('$tipo', '$talla', '$nombre', '$marca', '$color', '$exist', '$nota')");
         if ($sql==1) {
-            echo '<div class="alert alert-success text-center">Elementos agregados.</div>';
+            echo '<div class="alert alert-success text-center"><strong>Elementos agregados.</strong></div>';
         } else {
-            echo '<div class="alert alert-danger text-center">ERROR No se agregaron los elementos.</div>';
+            echo '<div class="alert alert-danger text-center"><strong>ERROR No se agregaron los elementos.</strong></div>';
         }
-        
 
     }else {
-        echo '<div class="alert alert-warning text-center">Todos los campos son obligatorios.</div>';
+        echo '<div class="alert alert-warning text-center"><strong>Todos los campos son obligatorios.</strong></div>';
     }
 }
 ?>
