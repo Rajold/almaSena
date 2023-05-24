@@ -12,6 +12,7 @@ if (empty($_SESSION['id'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="../assets/senaGreen.png" type="image/x-icon">
+  <!-- BootStrap -->
   <link rel="stylesheet" href="../csss/bootstrap/css/bootstrap.min.css">
   <title>Movimientos</title>
 
@@ -40,7 +41,7 @@ if (empty($_SESSION['id'])) {
   <!-- Tabs-Pestañas  -->
   <div class="container-fluid">
     <div class="row">
-      <div class="btn border-info bg-success-subtle mt-4 shadow-sm col-2">
+      <div class="btn border-info bg-success text-white mt-4 shadow-sm col-2">
         <?php 
           echo $_SESSION["nombre"]
         ?>
@@ -78,12 +79,19 @@ if (empty($_SESSION['id'])) {
 	<div class="col-3">
 				<!-- Título-Title -->
 		<div class="w-100 d-flex justify-content-center align-items-center border-primary mb-3">
-        	<span class="bg-danger text-white p-2 rounded" for="selectr" type="text">
+        	<span class="bg-danger rounded p-1 text-white">
 				Agregar elementos al inventario.</span>
     	</div>
+
+		<?php
+		include ("../controllers/dbConection.php");
+		include ("../controllers/addElements.controller.php");
+		 ?>
+
+<form action="" method="post">
 		<div class="input-group mb-3">
 			<span class="input-group-text bg-success-subtle border-primary" id="">Categoría</span>
-			<select class="form-select pe-5 border-primary" name="elementoTipo" id="">
+			<select class="form-select pe-5 border-primary" name="elemTipo" id="">
               <option value="Elija uno"></option>
               <option value="1" onclick="showDiv1()">Protección de la cabeza</option>
               <option value="2" onclick="showDiv2()">Protección visual</option>
@@ -96,28 +104,34 @@ if (empty($_SESSION['id'])) {
 
 		<div class="input-group mb-3">
 			<span class="input-group-text bg-success-subtle border-primary" id="">Nombre</span>
-			<input 	type="text" class="form-control border-primary" placeholder="del elemento"
+			<input 	type="text" class="form-control border-primary" name="nombre" placeholder="del elemento"
 					aria-label="Nombre del elemento" aria-describedby="basic-addon2">
 		</div>
 
 		<div class="input-group mb-3">
-			<span class="input-group-text bg-success-subtle border-primary" id="">Talla</span>
-			<input type="text" class="form-control border-primary" id="basic-url">
+			<span class="input-group-text bg-success-subtle border-primary"  id="">Talla</span>
+			<input type="text" class="form-control border-primary" name="talla" id="basic-url">
 			<span class="input-group-text bg-success-subtle border-primary">Marca</span>
-			<input type="text" class="form-control border-primary">
+			<input type="text" class="form-control border-primary" name="marca">
 		</div>
 
 		<div class="input-group mb-3">	
 			<span class="input-group-text bg-success-subtle border-primary">Color</span>
-			<input type="text" class="form-control border-primary">
+			<input type="text" class="form-control border-primary" name="color" >
 			<span class="input-group-text bg-success-subtle border-primary">Existencias</span>
-			<input type="text" class="form-control border-primary">
+			<input type="text" class="form-control border-primary" name="exist" >
 		</div>
 
 		<div class="input-group">
 			<span class="input-group-text bg-success-subtle border-primary">Nota:</span>
-			<textarea class="form-control border-primary" aria-label="With textarea"></textarea>
+			<textarea class="form-control border-primary"  name="nota" aria-label="With textarea"></textarea>
 		</div>
+
+		<div>
+		<input class="btn btn-success text-white w-100 mt-2 fw-semibold shadow-sm mb-1" 
+		name="btnAdd" type="submit" value="Agregar">
+        </div>
+		</form>
 	</div>
 			<!-- Listado de elementos -->
 	<div class="col-9">
@@ -136,8 +150,6 @@ if (empty($_SESSION['id'])) {
 			</thead>
 <tbody>
 	<?php
-		include ("../controllers/dbConection.php");
-
 		$sqlElm= $conexion->query("SELECT * FROM elementos");
 		while($tableData= $sqlElm->fetch_object()) {
 			?>
@@ -200,7 +212,16 @@ if (empty($_SESSION['id'])) {
     </div>
   </div>
 
-
+  <!-- Script para borrar los alerts -->
+  <script>
+    //AutoCierre
+   window.setTimeout(function() {
+    $(".alert").fadeTo(2500, 0).slideDown(1000, function(){
+        $(this).remove(); 
+    });
+   }, 3000); //3 segundos y desaparece
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </body>
 

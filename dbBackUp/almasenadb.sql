@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-05-2023 a las 18:47:54
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
+-- Tiempo de generación: 24-05-2023 a las 08:22:00
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,12 +37,12 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`idCategoria`, `nombreCat`) VALUES
-(1, 'cabeza'),
-(2, 'visual'),
-(3, 'auditivo'),
-(4, 'respiratorio'),
-(5, 'prendas'),
-(6, 'calzado');
+(1, 'Cabeza'),
+(2, 'Visual'),
+(3, 'Auditivo'),
+(4, 'Respiratorio'),
+(5, 'Prendas'),
+(6, 'Calzado');
 
 -- --------------------------------------------------------
 
@@ -58,17 +58,20 @@ CREATE TABLE `elementos` (
   `marca` varchar(50) NOT NULL,
   `color` varchar(10) NOT NULL,
   `existencias` int(10) NOT NULL,
-  `obsevacion` varchar(500) NOT NULL
+  `observacion` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `elementos`
 --
 
-INSERT INTO `elementos` (`idElemento`, `fkCategoria`, `fkTalla`, `elemento`, `marca`, `color`, `existencias`, `obsevacion`) VALUES
+INSERT INTO `elementos` (`idElemento`, `fkCategoria`, `fkTalla`, `elemento`, `marca`, `color`, `existencias`, `observacion`) VALUES
 (1, 3, 21, 'Tapa oidos de inserción', 'Sosega', 'Amarillo', 200, 'De los nuevos'),
 (2, 3, 21, 'Tapa oidos tipo copa', 'Sosega', 'varios', 100, 'Color es irrelevante.'),
-(3, 2, 21, 'monogafas', 'sosega', 'negro', 200, 'Modelo nuevo');
+(3, 2, 21, 'monogafas', 'sosega', 'negro', 200, 'Modelo nuevo'),
+(4, 2, 21, 'monogafas', 'Sosega', 'azul', 100, 'la misma negra pero en azul'),
+(5, 4, 21, 'Tapa boca', 'Venus', 'blanco', 50, '95'),
+(8, 1, 3, 'casco ', 'HP', 'gray', 2, 'Casco tipo Nasa.');
 
 -- --------------------------------------------------------
 
@@ -140,9 +143,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `user`, `idFicha`, `password`, `email`, `rol`) VALUES
-(0, '', 0, '', '', 'user'),
-(12265488, 'Max Power', 2451009, '4388', 'jafajardo8845@soy.sena.edu.co', 'admin'),
-(12265489, 'Sandra ', 0, '1234', 'sandra@soy.sena.edu.co', 'user');
+(1423, 'Usuario de Prueba', 0, 'd375af34cc08aba9a1cc9b6596a70c36', 'test@mail.co', 'user'),
+(12265488, 'Max Power', 2451009, '473803f0f2ebd77d83ee60daaa61f381', 'jafajardo8845@soy.sena.edu.co', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -197,7 +199,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `elementos`
 --
 ALTER TABLE `elementos`
-  MODIFY `idElemento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idElemento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `movimiento`

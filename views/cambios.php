@@ -18,7 +18,7 @@ if (empty($_SESSION['id'])) {
   <div class="container-fluid">
     <div class="row">
     <div class="row">
-      <div class="btn bg-success-subtle  mt-4 shadow-sm  col-2">
+      <div class="btn border-info bg-success text-white mt-4 shadow-sm  col-2">
         <?php 
           echo $_SESSION["nombre"]
         ?>

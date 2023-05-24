@@ -77,13 +77,14 @@ style="background-image: url('../assets/userBackGround2.jpg'); height: 100vh">
         </div>
     </div>
 
+    <!-- Script para borrar los alerts -->
     <script>
-    //Autoclose
+    //AutoCierre
    window.setTimeout(function() {
     $(".alert").fadeTo(2500, 0).slideDown(1000, function(){
         $(this).remove(); 
     });
-   }, 1000); //2 segundos y desaparece
+   }, 1000); //1 segundo y desaparece
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>
