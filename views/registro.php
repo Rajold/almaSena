@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/senaGreen.png" type="image/x-icon">
     <link rel="stylesheet" href="../csss/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../csss/style.css">
     <title>Registro</title>
 </head>
 
@@ -29,21 +30,21 @@ style="background-image: url('../assets/userBackGround2.jpg'); height: 100vh">
         include("../controllers/register.php");
         ?>
             <div class="form-floating input-group mt-4">
-                <div class="input-group-text bg-info">
+                <div class="input-group-text">
                     <img src="../assets/username-icon.svg" alt="username-icon" style="height: 1rem" />
                 </div>
                 <input class=" form-control bg-light" name="uname" type="text" id="nameInput" placeholder="" />
                 <label for="mailInput" class="form-label px-5">Nombre y Apellido</label>
             </div>
             <div class="form-floating input-group mt-2">
-                <div class="input-group-text bg-info">
+                <div class="input-group-text ">
                     <img src="../assets/username-icon.svg" alt="username-icon" style="height: 1rem" />
                 </div>
                 <input class=" form-control bg-light" name="dni" type="number" id="dniInput" placeholder="" />
                 <label for="mailInput" class="form-label px-5">Identificación</label>
             </div>
             <div class="form-floating input-group mt-2">
-                <div class="input-group-text bg-info">
+                <div class="input-group-text">
                     <img src="../assets/username-icon.svg" alt="username-icon" style="height: 1rem" />
                 </div>
                 <input class=" form-control bg-light" name="email" type="email" id="mailInput" placeholder="" />
@@ -51,21 +52,21 @@ style="background-image: url('../assets/userBackGround2.jpg'); height: 100vh">
             </div>
 
             <div class="form-floating input-group mt-2">
-                <div class="input-group-text bg-info">
+                <div class="input-group-text">
                     <img src="../assets/password-icon.svg" alt="password-icon" style="height: 1rem" />
                 </div>
                 <input class="form-control bg-light" name="pass" type="password" placeholder="" />
                 <label for="exampleInputPassword1" class="form-label px-5">Contraseña</label>
             </div>
             <div class="form-floating input-group mt-2">
-                <div class="input-group-text bg-info">
+                <div class="input-group-text">
                     <img src="../assets/password-icon.svg" alt="password-icon" style="height: 1rem" />
                 </div>
                 <input class="form-control bg-light" name="passConf" type="password" placeholder="" />
                 <label for="exampleInputPassword1" class="form-label px-5">Confirmar Contraseña</label>
             </div>
             <div>
-                <input name="dataSend" class="btn btn-info text-white w-100 mt-2 fw-semibold shadow-sm" 
+                <input name="dataSend" class="btn text-white w-100 mt-2 fw-semibold shadow-sm" 
                 type="submit" value="REGISTRAR USUARIO">
             </div>
         </form>

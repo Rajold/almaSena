@@ -13,7 +13,7 @@
 
 <body class="d-flex justify-content-center align-items-center vh-100 bg-image"
     style="background-image: url('./assets/inventoryView.webp'); height: 100vh">
-    <div class="bg-white p-5 rounded-5 text-secondary shadow" style="width: 25rem">
+    <div class="formCont p-5 rounded-5 text-secondary shadow" style="width: 25rem">
         <div class="d-flex justify-content-center">
             <img src="./assets/login-icon.svg" alt="login-icon" style="height: 7rem" />
         </div>
@@ -27,7 +27,7 @@
         <!-- inicio formulario -->
         <form action="" method="post">
             <div class="form-floating input-group mt-4">
-                <div class="input-group-text bg-info">
+                <div class="input-group-text">
                     <img src="./assets/username-icon.svg" alt="username-icon" style="height: 1rem" />
                 </div>
                 <input class=" form-control bg-light" name="email" type="email" id="mailInput" placeholder="" />
@@ -35,7 +35,7 @@
             </div>
 
             <div class="form-floating input-group mt-1">
-                <div class="input-group-text bg-info">
+                <div class="input-group-text">
                     <img src="./assets/password-icon.svg" alt="password-icon" style="height: 1rem" />
                 </div>
                 <input class="form-control bg-light" name="password" type="password" placeholder="" />
@@ -47,19 +47,19 @@
                     <div class="pt-1" style="font-size: 0.9rem">Recordarme</div>
                 </div>
                 <div class="pt-1">
-                    <a href="#" class="text-decoration-none text-info fw-semibold fst-italic"
+                    <a href="#" class="text-decoration-none fw-semibold fst-italic"
                         style="font-size: 0.9rem">Perdió su contraseña?</a>
                 </div>
             </div>
             
             <div>
-                <input name="btnLogin" class="btn btn-info text-white w-100 mt-2 fw-semibold shadow-sm" 
+                <input name="dataSend" class="btn text-white w-100 mt-2 fw-semibold shadow-sm" 
                 type="submit" value="Iniciar Sesión">
             </div>
             
             <div class="d-flex gap-1 justify-content-center mt-1">
                 <div>No está registrado?</div>
-                <a href="./views/registro.php" class="text-decoration-none text-info fw-semibold">Regístrese aquí.</a>
+                <a href="./views/registro.php" class="text-decoration-none fw-semibold">Regístrese aquí.</a>
             </div>
         </form>
         <!-- fin de formulario -->

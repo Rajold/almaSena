@@ -3,7 +3,7 @@ SELECT * FROM elementos as e, categorias as c, tallas as t where e.fkCategoria=c
 :root {
 --globalGreen: #39a900;
 }
-$background: var(--globalGreen);
+background-color: var(--globalGreen);
 
 
 
