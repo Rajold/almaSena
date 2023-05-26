@@ -1,6 +1,6 @@
 <?php
 session_start();
-    if (!empty($_POST["btnLogin"])) {
+    if (!empty($_POST["dataSend"])) {
         if (empty($_POST["email"]) 
          || empty($_POST["password"]))
           { 

@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/senaGreen.png" type="image/x-icon">
     <link rel="stylesheet" href="../csss/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../csss/style.css">
+    <link rel="stylesheet" href="../csss/generalStyles.css">
     <title>Registro</title>
 </head>
 
 <body class="d-flex justify-content-center align-items-center vh-100 bg-image"
 style="background-image: url('../assets/userBackGround2.jpg'); height: 100vh">
-    <div class="bg-white p-5 rounded-5 text-secondary shadow" style="width: 40rem">
+    <div class="formCont p-5 rounded-5 text-secondary shadow" style="width: 40rem">
         <div class="d-flex justify-content-center">
             <img src="../assets/login-icon.svg" alt="login-icon" style="height: 4rem" />
         </div>

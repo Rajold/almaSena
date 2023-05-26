@@ -4,6 +4,12 @@ if (empty($_SESSION['id'])) {
   header("Location:../index.php");
 }
 ?>
+
+<?php
+		include ("../controllers/dbConection.php");
+		
+		 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -15,7 +21,10 @@ if (empty($_SESSION['id'])) {
   <!-- BootStrap -->
   <link rel="stylesheet" href="../csss/bootstrap/css/bootstrap.min.css">
   <title>Movimientos</title>
-
+  <script
+	src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
 </head>
 
 <body class="vh-100">
@@ -58,41 +67,34 @@ if (empty($_SESSION['id'])) {
 <div class="container-fluid">
 	<div class="row">
 		<!-- Formulario de adición -->
-	<div class="col-3">
+	<div class="col-4">
 				<!-- Título-Title -->
 		<div class="w-100 d-flex justify-content-center align-items-center border-primary mb-3">
         	<span class="bg-danger rounded p-1 text-white">
 				Agregar elementos al inventario.</span>
     	</div>
 
-		<?php
-		include ("../controllers/dbConection.php");
-		include ("../controllers/addElements.controller.php");
-		 ?>
+		
 
 <form action="" method="post">
 		<div class="input-group mb-3">
 			<span class="input-group-text bg-success-subtle border-primary" id="">Categoría></span>
-			<select class="form-select pe-5 border-primary" name="elemTipo" id="">
-              <option value="Elija uno"></option>
-              <option value="1" onclick="showDiv1()">Protección de la cabeza</option>
-              <option value="2" onclick="showDiv2()">Protección visual</option>
-              <option value="3" onclick="showDiv3()">Protección auditiva</option>
+			<select class="form-select pe-5 border-primary" id="lista1" name="lista1">
+              <option value="0">Seleccione una</option>
+              <option value="1">Protección de la cabeza</option>
+              <option value="2">Protección visual</option>
+              <option value="3">Protección auditiva</option>
               <option value="4">Respiratorio</option>
               <option value="5">Prendas</option>
               <option value="6">Calzado</option>
             </select>
 		</div>
 
-		<div class="input-group mb-3">
-			<span class="input-group-text bg-success-subtle border-primary" id="">Nombre></span>
-			<input 	type="text" class="form-control border-primary" name="nombre" placeholder="del elemento"
-					aria-label="Nombre del elemento" aria-describedby="basic-addon2">
+		<!-- contenedor para el select nombre -->
+		<div class="input-group mb-3" id="select2lista">
 		</div>
 
 		<div class="input-group mb-3">
-			<span class="input-group-text bg-success-subtle border-primary"  id="">Talla></span>
-			<input type="text" class="form-control border-primary" name="talla" id="basic-url">
 			<span class="input-group-text bg-success-subtle border-primary">Marca></span>
 			<input type="text" class="form-control border-primary" name="marca">
 		</div>
@@ -116,7 +118,7 @@ if (empty($_SESSION['id'])) {
 		</form>
 	</div>
 			<!-- Listado de elementos -->
-	<div class="col-9">
+	<div class="col-8">
 		<table class="table table-bordered border-primary">
 			<thead class="bg-info">
 				<tr>
@@ -132,13 +134,13 @@ if (empty($_SESSION['id'])) {
 			</thead>
 <tbody>
 	<?php
-		$sqlElm= $conexion->query("SELECT * FROM elementos as e, categorias as c where e.fkCategoria=c.idCategoria");
+		$sqlElm= $conexion->query("SELECT * FROM elementos as e, categorias as c, tallas as t where e.fkCategoria=c.idCategoria AND e.fkTalla=t.idTalla");
 		while($tableData= $sqlElm->fetch_object()) {
 			?>
 			<tr>
 				<td><?= $tableData->nombreCat?></td>
 				<td><?= $tableData->elemento?></td>
-				<td><?= $tableData->fkTalla?></td>
+				<td><?= $tableData->tallas?></td>
 				<td><?= $tableData->marca?></td>
 				<td><?= $tableData->color?></td>
 				<td><?= $tableData->existencias?></td>
@@ -190,6 +192,30 @@ if (empty($_SESSION['id'])) {
    }, 2000); //2 segundos y desaparece
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Script para los elementos select -->
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#lista1').val(1);
+		recargarLista();
+
+		$('#lista1').change(function(){
+			recargarLista();
+		});
+	})
+</script>
+<script type="text/javascript">
+	function recargarLista(){
+		$.ajax({
+			type:"POST",
+			url:"../controllers/addElements.controller.php",
+			data:"categoria=" + $('#lista1').val(),
+			success:function(r){
+				$('#select2lista').html(r);
+			}
+		});
+	}
+</script>
 
 </body>
 

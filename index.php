@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./assets/senaGreen.png" type="image/x-icon">
     <link rel="stylesheet" href="./csss/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./csss/style.css">
+    <link rel="stylesheet" href="./csss/generalStyles.css">
     <title>almaSena</title>
 </head>
 
@@ -15,10 +15,10 @@
     style="background-image: url('./assets/inventoryView.webp'); height: 100vh">
     <div class="formCont p-5 rounded-5 text-secondary shadow" style="width: 25rem">
         <div class="d-flex justify-content-center">
-            <img src="./assets/login-icon.svg" alt="login-icon" style="height: 7rem" />
+            <img src="./assets/username-icon.svg" alt="login-icon" style="height: 5rem" />
         </div>
 
-        <div class="text-center fs-1 fw-bold">Login</div>
+        <div class="tittles size-5 text-center fs-2 fw-bold ">Inicio de Sesión</div>
 
         <?php
         include("controllers/dbConection.php");
@@ -44,22 +44,22 @@
             <div class="d-flex justify-content-around mt-1">
                 <div class="d-flex align-items-center gap-1">
                     <input class="form-check-input" type="checkbox" />
-                    <div class="pt-1" style="font-size: 0.9rem">Recordarme</div>
+                    <div class="lLetter pt-1" style="font-size: 0.9rem">Recordarme</div>
                 </div>
                 <div class="pt-1">
-                    <a href="#" class="text-decoration-none fw-semibold fst-italic"
+                    <a href="#" class="rLetter text-decoration-none fw-semibold fst-italic"
                         style="font-size: 0.9rem">Perdió su contraseña?</a>
                 </div>
             </div>
             
-            <div>
-                <input name="dataSend" class="btn text-white w-100 mt-2 fw-semibold shadow-sm" 
+            <div >
+                <input name="dataSend" class="btn w-100 mt-1 fw-semibold " 
                 type="submit" value="Iniciar Sesión">
             </div>
             
             <div class="d-flex gap-1 justify-content-center mt-1">
                 <div>No está registrado?</div>
-                <a href="./views/registro.php" class="text-decoration-none fw-semibold">Regístrese aquí.</a>
+                <a class="text-decoration-none fw-semibold" href="./views/registro.php">Regístrese aquí.</a>
             </div>
         </form>
         <!-- fin de formulario -->

@@ -1,0 +1,34 @@
+:root {
+    --colorA: #1F5C00;
+    --colorB:#116CA8;
+    --senaGreen: #39a900;
+    --colorC: #39a900;
+    --colorD: #A811A5;
+    --colorE: #A86608;
+    }
+
+.bttn  {
+    background-color: var(--senaGreen);
+    color: var(--colorC);
+}
+
+.input-group-text {
+    background-color: var(--senaGreen);
+}
+
+.formCont {
+    background-color: var(--colorB);
+}
+
+.tittles {
+    font-size: 2rem;
+    color: var(--colorD);
+}
+
+.rLetter {
+    color: var(--colorD);
+}
+
+.lLetter {
+    color: var(--colorE);
+}
