@@ -80,13 +80,13 @@ if (empty($_SESSION['id'])) {
 		<div class="input-group mb-3">
 			<span class="input-group-text bg-success-subtle border-primary" id="">Categoría></span>
 			<select class="form-select pe-5 border-primary" id="lista1" name="lista1">
-              <option value="0">Seleccione una</option>
-              <option value="1">Protección de la cabeza</option>
-              <option value="2">Protección visual</option>
-              <option value="3">Protección auditiva</option>
-              <option value="4">Respiratorio</option>
-              <option value="5">Prendas</option>
-              <option value="6">Calzado</option>
+              <option value="1" >Seleccione una</option>
+              <option value="2">Protección de la cabeza</option>
+              <option value="3">Protección visual</option>
+              <option value="4">Protección auditiva</option>
+              <option value="5">Respiratorio</option>
+              <option value="6">Prendas</option>
+              <option value="7">Calzado</option>
             </select>
 		</div>
 

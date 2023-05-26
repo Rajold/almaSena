@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-05-2023 a las 08:22:00
+-- Tiempo de generación: 26-05-2023 a las 20:19:44
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -37,12 +37,13 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`idCategoria`, `nombreCat`) VALUES
-(1, 'Cabeza'),
-(2, 'Visual'),
-(3, 'Auditivo'),
-(4, 'Respiratorio'),
-(5, 'Prendas'),
-(6, 'Calzado');
+(1, ''),
+(2, 'cabeza'),
+(3, 'visual'),
+(4, 'auditivo'),
+(5, 'respiratorio'),
+(6, 'prendas'),
+(7, 'calzado');
 
 -- --------------------------------------------------------
 
@@ -66,12 +67,25 @@ CREATE TABLE `elementos` (
 --
 
 INSERT INTO `elementos` (`idElemento`, `fkCategoria`, `fkTalla`, `elemento`, `marca`, `color`, `existencias`, `observacion`) VALUES
-(1, 3, 21, 'Tapa oidos de inserción', 'Sosega', 'Amarillo', 200, 'De los nuevos'),
-(2, 3, 21, 'Tapa oidos tipo copa', 'Sosega', 'varios', 100, 'Color es irrelevante.'),
-(3, 2, 21, 'monogafas', 'sosega', 'negro', 200, 'Modelo nuevo'),
-(4, 2, 21, 'monogafas', 'Sosega', 'azul', 100, 'la misma negra pero en azul'),
-(5, 4, 21, 'Tapa boca', 'Venus', 'blanco', 50, '95'),
-(8, 1, 3, 'casco ', 'HP', 'gray', 2, 'Casco tipo Nasa.');
+(1, 4, 21, 'Tapa oidos de inserción', 'Sosega', 'Amarillo', 200, 'De los nuevos'),
+(2, 4, 21, 'Tapa oidos tipo copa', 'Sosega', 'varios', 100, 'Color es irrelevante.'),
+(3, 3, 21, 'monogafas', 'sosega', 'negro', 200, 'Modelo nuevo'),
+(4, 7, 6, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
+(5, 7, 7, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
+(6, 7, 8, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
+(7, 7, 9, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
+(8, 7, 10, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
+(9, 7, 11, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
+(10, 7, 12, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
+(11, 7, 13, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
+(12, 7, 14, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
+(13, 7, 15, 'Botas de seguridad', 'Saga', 'Café', 100, 'Las Mías '),
+(14, 7, 16, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
+(15, 7, 17, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
+(16, 7, 18, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
+(17, 7, 19, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
+(18, 7, 20, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
+(21, 2, 3, 'Pava montañera', '', 'Azul', 100, '');
 
 -- --------------------------------------------------------
 
@@ -102,26 +116,26 @@ CREATE TABLE `tallas` (
 --
 
 INSERT INTO `tallas` (`idTalla`, `tallas`) VALUES
-(2, 's'),
-(3, 'm'),
-(4, 'l'),
-(5, 'xl'),
-(6, '30'),
-(7, '31'),
-(8, '32'),
-(9, '33'),
-(10, '34'),
-(11, '35'),
-(12, '36'),
-(13, '37'),
-(14, '38'),
-(15, '39'),
-(16, '40'),
-(17, '41'),
-(18, '42'),
-(19, '43'),
-(20, '44'),
-(21, 'na');
+(2, 'Talla s'),
+(3, 'Talla m'),
+(4, 'Talla l'),
+(5, 'Talla xl'),
+(6, 'Talla 30'),
+(7, 'Talla 31'),
+(8, 'Talla 32'),
+(9, 'Talla 33'),
+(10, 'Talla34'),
+(11, 'Talla 35'),
+(12, 'Talla 36'),
+(13, 'Talla 37'),
+(14, 'Talla 38'),
+(15, 'Talla 39'),
+(16, 'Talla 40'),
+(17, 'Talla 41'),
+(18, 'Talla 42'),
+(19, 'Talla 43'),
+(20, 'Talla 44'),
+(21, '');
 
 -- --------------------------------------------------------
 
@@ -143,8 +157,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `user`, `idFicha`, `password`, `email`, `rol`) VALUES
-(1423, 'Usuario de Prueba', 0, 'd375af34cc08aba9a1cc9b6596a70c36', 'test@mail.co', 'user'),
-(12265488, 'Max Power', 2451009, '473803f0f2ebd77d83ee60daaa61f381', 'jafajardo8845@soy.sena.edu.co', 'admin');
+(12265488, 'Max Power', 0, '473803f0f2ebd77d83ee60daaa61f381', 'jafajardo8845@soy.sena.edu.co', 'admin'),
+(2147483647, 'Usuario de Prueba', 0, 'd375af34cc08aba9a1cc9b6596a70c36', 'test@mail.co', 'user');
 
 --
 -- Índices para tablas volcadas
@@ -193,13 +207,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `elementos`
 --
 ALTER TABLE `elementos`
-  MODIFY `idElemento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idElemento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `movimiento`

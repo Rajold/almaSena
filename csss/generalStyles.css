@@ -13,16 +13,16 @@
 }
 
 .input-group-text {
-    background-color: var(--senaGreen);
+    background-color: var(--colorB);
 }
 
 .formCont {
-    background-color: var(--colorB);
+    background-color: var(--colorC);
 }
 
 .tittles {
     font-size: 2rem;
-    color: var(--colorD);
+    color: var(--colorB);
 }
 
 .rLetter {

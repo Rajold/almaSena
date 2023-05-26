@@ -13,6 +13,7 @@
 
 <body class="d-flex justify-content-center align-items-center vh-100 bg-image"
     style="background-image: url('./assets/inventoryView.webp'); height: 100vh">
+    
     <div class="formCont p-5 rounded-5 text-secondary shadow" style="width: 25rem">
         <div class="d-flex justify-content-center">
             <img src="./assets/username-icon.svg" alt="login-icon" style="height: 5rem" />
@@ -44,7 +45,7 @@
             <div class="d-flex justify-content-around mt-1">
                 <div class="d-flex align-items-center gap-1">
                     <input class="form-check-input" type="checkbox" />
-                    <div class="lLetter pt-1" style="font-size: 0.9rem">Recordarme</div>
+                    <div class="lLetter pt-1" style="font-size: 0.9rem"><strong>Recordarme</strong></div>
                 </div>
                 <div class="pt-1">
                     <a href="#" class="rLetter text-decoration-none fw-semibold fst-italic"
@@ -53,7 +54,7 @@
             </div>
             
             <div >
-                <input name="dataSend" class="btn w-100 mt-1 fw-semibold " 
+                <input name="dataSend" class="btn w-100 mt-1 fw-semibold" 
                 type="submit" value="Iniciar Sesión">
             </div>
             

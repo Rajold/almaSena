@@ -23,7 +23,7 @@ style="background-image: url('../assets/userBackGround2.jpg'); height: 100vh">
         <!-- inicio formulario -->
         <form action="" method="post">
 
-        <div class="text-center fs-1 fw-bold">Registrar Usuario</div>
+        <div class="tittles text-center fs-1 fw-bold">Registrar Usuario</div>
 
         <?php
         include("../controllers/dbConection.php");
