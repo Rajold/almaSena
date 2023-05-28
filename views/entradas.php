@@ -7,7 +7,7 @@ if (empty($_SESSION['id'])) {
 
 <?php
 		include ("../controllers/dbConection.php");
-		
+		// include ("../controllers/captura.controller.php");
 		 ?>
 
 <!DOCTYPE html>
@@ -76,10 +76,10 @@ if (empty($_SESSION['id'])) {
 
 		
 
-<form action="" method="post">
+<form action="../controllers/addElements.controller.php" method="post">
 		<div class="input-group mb-3">
 			<span class="input-group-text bg-success-subtle border-primary" id="">Categoría></span>
-			<select class="form-select pe-5 border-primary" id="lista1" name="lista1">
+			<select class="listaCat form-select pe-5 border-primary" id="listaCat" name="listaCat">
               <option value="1" >Seleccione una</option>
               <option value="2">Protección de la cabeza</option>
               <option value="3">Protección visual</option>
@@ -91,31 +91,44 @@ if (empty($_SESSION['id'])) {
 		</div>
 
 		<!-- contenedor para el select nombre -->
-		<div class="input-group mb-3" id="select2lista">
+		<div class="input-group mb-3" id="select2lista" name="select2lista">
 		</div>
 
-		<div class="input-group mb-3">
+		<!-- <div class="input-group mb-3">
 			<span class="input-group-text bg-success-subtle border-primary">Marca></span>
 			<input type="text" class="form-control border-primary" name="marca">
-		</div>
+		</div> -->
 
 		<div class="input-group mb-3">	
-			<span class="input-group-text bg-success-subtle border-primary">Color></span>
-			<input type="text" class="form-control border-primary" name="color" >
-			<span class="input-group-text bg-success-subtle border-primary">Existencias></span>
-			<input type="text" class="form-control border-primary" name="exist" >
+			<!-- <span class="input-group-text bg-success-subtle border-primary" id="">Color></span>
+			<select class="listaColor form-select pe-5 border-primary" id="listaColor" name="listaColor">
+				<option value="1"></option>
+				<option value="2">Varios</option>
+				<option value="3" >Negro</option>
+				<option value="4">Café</option>
+				<option value="5">Rojo</option>
+				<option value="6">Naranja</option>
+				<option value="7">Amarillo</option>
+				<option value="8">Verde</option>
+				<option value="9">Azul</option>
+				<option value="10">Violeta</option>
+				<option value="11">Gris</option>
+				<option value="12">Blaco</option>
+            </select> -->
+			<span class="input-group-text bg-success-subtle border-primary">Cantidad></span>
+			<input type="text" class="listaCant form-control border-primary" name="listaCant" >
 		</div>
 
 		<div class="input-group">
 			<span class="input-group-text bg-success-subtle border-primary">Nota:</span>
-			<textarea class="form-control border-primary"  name="nota" aria-label="With textarea"></textarea>
+			<textarea class="listaNota form-control border-primary"  name="nota" aria-label="With textarea"></textarea>
 		</div>
 
 		<div>
 		<input class="btn btn-success text-white w-100 mt-2 fw-semibold shadow-sm mb-1" 
 		name="btnAdd" type="submit" value="Agregar">
         </div>
-		</form>
+</form>
 	</div>
 			<!-- Listado de elementos -->
 	<div class="col-8">
@@ -146,7 +159,7 @@ if (empty($_SESSION['id'])) {
 				<td><?= $tableData->existencias?></td>
 				<td><?= $tableData->observacion?></td>
 				<td>
-				
+				<!-- Botón editar -->
 				<a class="btn btn-small btn-warning" name="btnEdit" href=""><svg
 						xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 						class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -156,6 +169,7 @@ if (empty($_SESSION['id'])) {
 							d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
 					</svg>
 				</a>
+        <!-- Botón eliminar -->
 				<a class="btn btn-small btn-danger" name="btnDelete" href=""><svg
 						xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 						class="bi bi-trash" viewBox="0 0 16 16">
@@ -196,20 +210,21 @@ if (empty($_SESSION['id'])) {
 <!-- Script para los elementos select -->
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('#lista1').val(1);
+		$('#listaCat').val(1);
 		recargarLista();
 
-		$('#lista1').change(function(){
+		$('#listaCat').change(function(){
 			recargarLista();
 		});
 	})
 </script>
+
 <script type="text/javascript">
 	function recargarLista(){
 		$.ajax({
 			type:"POST",
-			url:"../controllers/addElements.controller.php",
-			data:"categoria=" + $('#lista1').val(),
+			url:"../controllers/captura.controller.php",
+			data:"categoria=" + $('#listaCat').val(),
 			success:function(r){
 				$('#select2lista').html(r);
 			}

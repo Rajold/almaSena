@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-05-2023 a las 20:19:44
+-- Tiempo de generación: 28-05-2023 a las 18:00:55
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -79,7 +79,7 @@ INSERT INTO `elementos` (`idElemento`, `fkCategoria`, `fkTalla`, `elemento`, `ma
 (10, 7, 12, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
 (11, 7, 13, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
 (12, 7, 14, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
-(13, 7, 15, 'Botas de seguridad', 'Saga', 'Café', 100, 'Las Mías '),
+(13, 7, 15, 'Botas de seguridad', 'Saga', 'Café', 1, 'Las Mías '),
 (14, 7, 16, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
 (15, 7, 17, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
 (16, 7, 18, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
@@ -140,6 +140,30 @@ INSERT INTO `tallas` (`idTalla`, `tallas`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tests`
+--
+
+CREATE TABLE `tests` (
+  `idTest` int(11) NOT NULL,
+  `campoTest` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tests`
+--
+
+INSERT INTO `tests` (`idTest`, `campoTest`) VALUES
+(4, 'valor'),
+(5, 'valor'),
+(6, 'valor'),
+(7, 'valor'),
+(8, 'valor'),
+(9, 'valre'),
+(10, 'ss');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -194,6 +218,12 @@ ALTER TABLE `tallas`
   ADD PRIMARY KEY (`idTalla`);
 
 --
+-- Indices de la tabla `tests`
+--
+ALTER TABLE `tests`
+  ADD PRIMARY KEY (`idTest`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -213,7 +243,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `elementos`
 --
 ALTER TABLE `elementos`
-  MODIFY `idElemento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `idElemento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `movimiento`
@@ -226,6 +256,12 @@ ALTER TABLE `movimiento`
 --
 ALTER TABLE `tallas`
   MODIFY `idTalla` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT de la tabla `tests`
+--
+ALTER TABLE `tests`
+  MODIFY `idTest` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restricciones para tablas volcadas

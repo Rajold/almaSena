@@ -1,6 +1,6 @@
 :root {
     --colorA: #1F5C00;
-    --colorB:#116CA8;
+    --colorB:#c7dbe7;
     --senaGreen: #39a900;
     --colorC: #39a900;
     --colorD: #A811A5;
@@ -13,16 +13,16 @@
 }
 
 .input-group-text {
-    background-color: var(--colorB);
+    background-color: var(--colorC);
 }
 
 .formCont {
-    background-color: var(--colorC);
+    background-color: var(--colorB);
 }
 
 .tittles {
     font-size: 2rem;
-    color: var(--colorB);
+    color: var(--colorC);
 }
 
 .rLetter {
@@ -31,4 +31,13 @@
 
 .lLetter {
     color: var(--colorE);
+}
+
+.logoSena {
+    margin-bottom: -40px;
+}
+
+.logoSena img {
+    border-radius: 50%;
+    box-shadow: 10px 5px 5px black;
 }

@@ -1,18 +1,29 @@
 <?php
-include ("../controllers/dbConection.php");
+include ("dbConection.php");
+include ("captura.controller.php");
 
-$categoria=$_POST['categoria'];
+//Agregar datos a la bd 
+if (!empty($_POST["btnAdd"])) {
+  if (!empty($_POST["listaCat"]) 
+    //and !empty($_POST["select2lista"]) 
+    and !empty($_POST["listaCant"])) 
+    {
+      $imp= $col;
+      $cant= $_POST["listaCant"];
+      $not= $_POST["listaNota"];
+            
+      $sql= $conexion->query ("UPDATE elementos AS e, categorias AS c, tallas AS t SET e.existencias= '$cant' WHERE e.idElemento= '$imp[0]' ");
 
-$sql="SELECT * FROM elementos as e, categorias as c, tallas AS t where e.fkCategoria=c.idCategoria AND e.fkTalla= t.idTalla AND fkCategoria='$categoria'";
-
-$resultado=mysqli_query($conexion,$sql);
-
-$cadena="<span class='input-group-text bg-success-subtle border-primary'>Elemento</span>
-			<select class='form-select pe-5 border-primary' id='lista2' name='lista2'>";
-
-            while ($ver=mysqli_fetch_row($resultado)) {
-                $cadena=$cadena.'<option value='.$ver[0].'>'.utf8_encode($ver[3])." ".utf8_encode($ver[11]).'</option>';
-            }   
-            echo  $cadena."</select>";       
-
+      if ($sql==1) {
+          echo '<div class="alert alert-success text-center"><strong>Elementos agregados.</strong></div>';
+          // header ("Location:../views/entradas.php"); 
+      } else {
+          echo '<div class="alert alert-danger text-center"><strong>ERROR No se agregaron los elementos.</strong></div>';
+      }
+            
+      }else {
+      echo '<div class="alert alert-warning text-center"><strong>Todos los campos son obligatorios.</strong></div>';
+    }
+}          
+ 
 ?>

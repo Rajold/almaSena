@@ -14,13 +14,12 @@
 <body class="d-flex justify-content-center align-items-center vh-100 bg-image"
     style="background-image: url('./assets/inventoryView.webp'); height: 100vh">
     
+<div>
+	<div class="tittles size-5 text-center fs-2 fw-bold "><strong>Inicio de Sesión</strong></div>
+            <div class="logoSena d-flex justify-content-center">
+                <img src="./assets/loginIconGreen.svg" alt="login-icon" style="height: 5rem" />
+            </div>
     <div class="formCont p-5 rounded-5 text-secondary shadow" style="width: 25rem">
-        <div class="d-flex justify-content-center">
-            <img src="./assets/username-icon.svg" alt="login-icon" style="height: 5rem" />
-        </div>
-
-        <div class="tittles size-5 text-center fs-2 fw-bold ">Inicio de Sesión</div>
-
         <?php
         include("controllers/dbConection.php");
         include("controllers/login.php"); 
@@ -54,7 +53,7 @@
             </div>
             
             <div >
-                <input name="dataSend" class="btn w-100 mt-1 fw-semibold" 
+                <input name="dataSend" class="bttn btn w-100 text-white mt-1 fw-semibold" 
                 type="submit" value="Iniciar Sesión">
             </div>
             
@@ -65,6 +64,8 @@
         </form>
         <!-- fin de formulario -->
     </div>
+</div>
+</div>
 
     <script>
     //Autoclose
