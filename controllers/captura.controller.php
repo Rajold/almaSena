@@ -13,6 +13,6 @@ $cadena="<span class='input-group-text bg-success-subtle border-primary'>Element
             while ($col=mysqli_fetch_row($resultado)) {
                 $cadena=$cadena.'<option value='.$col[0].'>'.utf8_encode($col[3])." ".utf8_encode($col[11]).'</option>';
             }   
-            echo  $cadena."</select>";      
+            echo  $cadena."</select>";
 // Fin auto rellenar el formulario
 ?>
