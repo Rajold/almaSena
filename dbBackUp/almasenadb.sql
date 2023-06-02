@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-05-2023 a las 18:00:55
+-- Tiempo de generación: 01-06-2023 a las 08:52:00
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -38,12 +38,12 @@ CREATE TABLE `categorias` (
 
 INSERT INTO `categorias` (`idCategoria`, `nombreCat`) VALUES
 (1, ''),
-(2, 'cabeza'),
-(3, 'visual'),
-(4, 'auditivo'),
-(5, 'respiratorio'),
-(6, 'prendas'),
-(7, 'calzado');
+(2, 'Cabeza'),
+(3, 'Visual'),
+(4, 'Auditivo'),
+(5, 'Respiratorio'),
+(6, 'Prendas'),
+(7, 'Calzado');
 
 -- --------------------------------------------------------
 
@@ -67,9 +67,9 @@ CREATE TABLE `elementos` (
 --
 
 INSERT INTO `elementos` (`idElemento`, `fkCategoria`, `fkTalla`, `elemento`, `marca`, `color`, `existencias`, `observacion`) VALUES
-(1, 4, 21, 'Tapa oidos de inserción', 'Sosega', 'Amarillo', 200, 'De los nuevos'),
+(1, 4, 21, 'Tapa oidos de inserción', 'Sosega', 'Amarillo', 200, 'De los más nuevos!'),
 (2, 4, 21, 'Tapa oidos tipo copa', 'Sosega', 'varios', 100, 'Color es irrelevante.'),
-(3, 3, 21, 'monogafas', 'sosega', 'negro', 200, 'Modelo nuevo'),
+(3, 3, 21, 'chimpagafas', 'Sosega', 'negro', 152751, 'sssssssssssss'),
 (4, 7, 6, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
 (5, 7, 7, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
 (6, 7, 8, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
@@ -79,13 +79,13 @@ INSERT INTO `elementos` (`idElemento`, `fkCategoria`, `fkTalla`, `elemento`, `ma
 (10, 7, 12, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
 (11, 7, 13, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
 (12, 7, 14, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
-(13, 7, 15, 'Botas de seguridad', 'Saga', 'Café', 1, 'Las Mías '),
+(13, 7, 15, 'Botas de seguridad', 'Saga', 'Café', 350, 'Las más pedidas.'),
 (14, 7, 16, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
 (15, 7, 17, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
 (16, 7, 18, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
 (17, 7, 19, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
 (18, 7, 20, 'Botas de seguridad', 'Saga', 'Café', 100, ''),
-(21, 2, 3, 'Pava montañera', '', 'Azul', 100, '');
+(22, 3, 21, 'chimpagafas', 'Sosega', 'azul', 152751, 'sssssssqqqqssssss');
 
 -- --------------------------------------------------------
 
@@ -118,8 +118,8 @@ CREATE TABLE `tallas` (
 INSERT INTO `tallas` (`idTalla`, `tallas`) VALUES
 (2, 'Talla s'),
 (3, 'Talla m'),
-(4, 'Talla l'),
-(5, 'Talla xl'),
+(4, 'Talla L'),
+(5, 'Talla xL'),
 (6, 'Talla 30'),
 (7, 'Talla 31'),
 (8, 'Talla 32'),
@@ -135,7 +135,7 @@ INSERT INTO `tallas` (`idTalla`, `tallas`) VALUES
 (18, 'Talla 42'),
 (19, 'Talla 43'),
 (20, 'Talla 44'),
-(21, '');
+(21, 'No aplica');
 
 -- --------------------------------------------------------
 

@@ -27,8 +27,7 @@ if (empty($_SESSION['id'])) {
 	crossorigin="anonymous"></script>
 </head>
 
-<body class="vh-100">
-  
+<body class="vh-100"> 
   <!-- Tabs-Pestañas  -->
   <div class="container-fluid">
     <div class="row">
@@ -74,7 +73,9 @@ if (empty($_SESSION['id'])) {
 				Agregar elementos al inventario.</span>
     	</div>
 
-		
+<?php 
+include '../controllers/delElements.controller.php';
+?>		
 
 <form action="../controllers/addElements.controller.php?idL=<?= 'select2lista'?>" method="post">
 		<div class="input-group mb-3">
@@ -162,7 +163,7 @@ if (empty($_SESSION['id'])) {
 				<td><?= $tableData->observacion?></td>
 				<td>
 <!-- Botón editar -->
-<a class="btn btn-small btn-warning" name="btnEdit" href="modificarElementos.php?id=<?= $tableData->idElemento?>"><svg
+<a class="btn btn-small btn-warning" href="modificarElementos.php?id=<?= $tableData->idElemento?>"><svg
 		xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 		class="bi bi-pencil-square" viewBox="0 0 16 16">
 		<path
@@ -172,15 +173,15 @@ if (empty($_SESSION['id'])) {
 	</svg>
 </a>
         <!-- Botón eliminar -->
-				<a class="btn btn-small btn-danger" name="btnDelete" href=""><svg
-						xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-						class="bi bi-trash" viewBox="0 0 16 16">
-						<path
-							d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
-						<path
-							d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
-					</svg>
-				</a>
+<a onclick="return eliminar()" class="btn btn-small btn-danger" href="entradas.php?id=<?= $tableData->idElemento?>">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+		class="bi bi-trash" viewBox="0 0 16 16">
+		<path
+			d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+		<path
+			d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+	</svg>
+</a>
 				
 
 				</td>
@@ -225,7 +226,7 @@ if (empty($_SESSION['id'])) {
 	function recargarLista(){
 		$.ajax({
 			type:"POST",
-			url:"../controllers/captura.controller.php",
+			url:"../controllers/addElements.controller.php",
 			data:"categoria=" + $('#listaCat').val(),
 			success:function(r){
 				$('#select2lista').html(r);
@@ -233,6 +234,14 @@ if (empty($_SESSION['id'])) {
 		});
 	}
 </script>
+
+<!-- ↓Script para confirmar eliminar elemento -->
+<script>
+    function eliminar() {
+      var confirmar= confirm('Está apunto de eliminar un registro, esta acción no se puede deshacer. Está seguro?');
+      return respuesta
+    }
+  </script>
 
 </body>
 

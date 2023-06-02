@@ -15,7 +15,7 @@
     style="background-image: url('./assets/inventoryView.webp'); height: 100vh">
     
 <div>
-	<div class="tittles size-5 text-center fs-2 fw-bold "><strong>Inicio de Sesión</strong></div>
+	<div class="size-5 text-center text-white fs-2 fw-bold "><strong>Inicio de Sesión</strong></div>
             <div class="logoSena d-flex justify-content-center">
                 <img src="./assets/loginIconGreen.svg" alt="login-icon" style="height: 5rem" />
             </div>

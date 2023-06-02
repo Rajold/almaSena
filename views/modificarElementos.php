@@ -5,6 +5,7 @@ if (empty($_SESSION['id'])) {
 }
 ?>
 
+<!-- ↓Consulta los datos del elemento cuyo id viene desde el botón editar de la vista entradas -->
 <?php
 	include ("../controllers/dbConection.php");
 	$id= $_GET['id'];
@@ -19,7 +20,7 @@ if (empty($_SESSION['id'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="../assets/senaGreen.png" type="image/x-icon">
-  <!-- BootStrap -->
+  <!-- ↓BootStrap -->
   <link rel="stylesheet" href="../csss/bootstrap/css/bootstrap.min.css">
   <title>Movimientos</title>
   <script
@@ -30,7 +31,7 @@ if (empty($_SESSION['id'])) {
 
 <body class="vh-100">
   
-  <!-- Tabs-Pestañas  -->
+  <!-- ↓Tabs-Pestañas  -->
   <div class="container-fluid">
     <div class="row">
       <div class="col-2 btn border-info bg-success text-white mt-2 shadow-sm ">
@@ -38,29 +39,42 @@ if (empty($_SESSION['id'])) {
           echo $_SESSION["nombre"]
         ?>
       </div>
-      <!-- Título-Title -->
-      <div class="col-9 d-flex justify-content-center align-items-center border-primary mb-3 ">
-        	<span class="bg-warning w-100 rounded mt-1 p-1 text-center text-dark">
-            Editar elementos del inventario.</span>
+      <!-- ↓Título-Title -->
+      <div class="col-9">
+		    <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link nav-link border-primary-subtle bg-info-subtle" aria-current="page" href="entradas.php">Entradas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link border-primary-subtle bg-info-subtle" href="salidas.php">Salidas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link border-primary-subtle bg-info-subtle" href="cambios.php">Cambios</a>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link active">Editar Elementos</p>
+          </li>
+        </ul>
     	</div>
-      <!-- Salir-LogOut -->
+      <!-- ↓Salir-LogOut -->
       <div class="col-1">
-          <button class="btn btn-danger w-100 mt-2 shadow-sm "><a class="text-decoration-none text-white"
-              href="../controllers/logout.php">Salir</a></button>
-          <i class="bi bi-box-arrow-left"></i>
+        <button class="btn btn-danger w-100 mt-2 shadow-sm "><a class="text-decoration-none text-white"
+          href="../controllers/logout.php">Salir</a>
+        </button>
+        <i class="bi bi-box-arrow-left"></i>
       </div>
     </div>
-
     <hr>
 
 
-    <!-- Contenedor formulario -Form container -->
-<div class="container-fluid">
+    <!-- ↓Contenedor formulario -Form container -->
+  <div class="container-fluid">
 	<div class="row">
-		<!-- Formulario de adición -->
+		<!-- ↓Formulario de adición -->
     <div class="col-4">
       <form action="" method="post">
-      <input type="inputId" id="inputId" name="inputId" value="<?= $_GET['id'] ?>" >
+        <!-- ↓Input oculto recoje el id recibido desde la vista, Permite llamarlo desde el controlador -->
+      <input type="inputId" id="inputId" name="inputId" value="<?= $_GET['id'] ?>" hidden="true">
         <?php 
         include ("../controllers/updElements.controller.php");
         while($elmData= $sql->fetch_object()) { ?>
@@ -107,10 +121,11 @@ if (empty($_SESSION['id'])) {
     ?>
 		
   </form>
-</div>
-<!-- Fin del formulario -->
+  </div>
+<!-- ↑Fin del formulario -->
 
-			<!-- Listado de elementos -->
+<!-- ------------------------------------------------------------------------------------------------------ -->
+			<!-- ↓Listado de elementos -->
 	<div class="col-8">
 		<table class="table table-bordered border-primary">
 			<thead class="bg-info">
@@ -139,8 +154,8 @@ if (empty($_SESSION['id'])) {
 				<td><?= $tableData->existencias?></td>
 				<td><?= $tableData->observacion?></td>
 				<td>
-				<!-- Botón editar -->
-				<a class="btn btn-small btn-warning" name="btnEdit" href=""><svg
+				<!-- ↓Botón editar -->
+				<a class="btn btn-small btn-warning" name="btnEdit" href="modificarElementos.php?id=<?= $tableData->idElemento?>"><svg
 						xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 						class="bi bi-pencil-square" viewBox="0 0 16 16">
 						<path
@@ -149,7 +164,7 @@ if (empty($_SESSION['id'])) {
 							d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
 					</svg>
 				</a>
-        <!-- Botón eliminar -->
+        <!-- ↓Botón eliminar -->
 				<a class="btn btn-small btn-danger" name="btnDelete" href=""><svg
 						xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 						class="bi bi-trash" viewBox="0 0 16 16">
@@ -171,19 +186,19 @@ if (empty($_SESSION['id'])) {
 	</div>
 
 	<hr>
-        <!-- fin de formulario -->
+        <!-- ↑fin de Listado de elementos -->
       </div>
     </div>
   </div>
 
-  <!-- Script para borrar los alerts -->
+  <!-- ↓Script para borrar los alerts -->
   <script>
-    //AutoCierre
+    //↓AutoCierre
    window.setTimeout(function() {
     $(".alert").fadeTo(2500, 0).slideDown(1000, function(){
         $(this).remove(); 
     });
-   }, 2000); //2 segundos y desaparece
+   }, 2000); //←2 segundos y desaparece
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 

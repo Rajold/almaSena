@@ -7,7 +7,7 @@ if (!empty($_POST['btnUpd'])){
     AND !empty($_POST['inputColor'])
     AND !empty($_POST['inputExists'])){
      
-    $Id= $_POST['inputId'];  
+    $Id= $_POST['inputId'];  // ←llama el ide que recogió el input oculto en la vista
     $Cat= $_POST['inputCat'];
     $Name= $_POST['inputName'];
     $Talla= $_POST['inputTalla'];
@@ -16,23 +16,28 @@ if (!empty($_POST['btnUpd'])){
     $Exists= $_POST['inputExists'];
     $Nota= $_POST['inputNota'];
 
+    $sqlCts= $conexion->query("SELECT * FROM categorias, tallas WHERE nombreCat= '$Cat' and tallas= '$Talla'");
     
-    $sqlT= $conexion->query("SELECT * FROM elementos AS e, tallas AS t, categorias AS c WHERE e.idElemento= '$id'");
-    while ($dataFk= $sqlT->fetch_object()) {
-      $idTalla= $dataFk->fkTalla;
-      $idCategoria= $dataFk->fkCategoria;
-    
-   
-    
-  }
-  echo $idCategoria."\n";
-  echo $idTalla;
+    while ($dataCts= $sqlCts->fetch_object()){
+      $idCt= $dataCts->idCategoria;
+      $idTll= $dataCts->idTalla;
+    }
 
-  $sqlVar= $conexion->query("UPDATE elementos AS e 
-    SET e.fkCategoria='$idCategoria', e.elemento= '$Name', e.fkTalla= '$idTalla', e.marca= '$Marca', e.color= '$Color', e.existencias= '$Exists', e.observacion='$Nota' 
+  $sqlUpd= $conexion->query("UPDATE elementos AS e 
+    SET e.fkCategoria='$idCt', e.elemento= '$Name', e.fkTalla= '$idTll', e.marca= '$Marca', e.color= '$Color', e.existencias= '$Exists', e.observacion='$Nota' 
     WHERE idElemento='$Id' "); 
+
+if ($sqlUpd==1) {
+  // header ("Location:../views/entradas.php");
+  echo '<div class="alert alert-success text-center"><strong>Elemento actualizado.</strong></div>';
+   
+} else {
+  header ("Location:../views/entradas.php");
+  echo '<div class="alert alert-danger text-center"><strong>ERROR, Revise los parámetros.</strong></div>';
+}
     }else {
         echo '<div class="alert alert-warning text-center"><strong>Todos los campos son obligatorios.</strong></div>';
     }
 }
+
 ?>
