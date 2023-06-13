@@ -75,6 +75,7 @@ if (empty($_SESSION['id'])) {
 
 <?php 
 include '../controllers/delElements.controller.php';
+// include '../controllers/addElements.controller.php';
 ?>		
 
 <form action="../controllers/addElements.controller.php" method="post">

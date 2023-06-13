@@ -1,6 +1,7 @@
 <?php
 include ("dbConection.php");
 //↓para auto rellenar el formulario
+
 $categoria=$_POST['categoria'];
 $sql="SELECT * FROM elementos as e, categorias as c, tallas AS t 
 where e.fkCategoria=c.idCategoria AND e.fkTalla= t.idTalla AND fkCategoria='$categoria'";
@@ -18,32 +19,32 @@ $cadena="<span class='input-group-text bg-success-subtle border-primary'>Element
 
 //Agregar datos a la bd 
 if (!empty($_POST["btnAdd"])) {
-
-  echo $_POST["lista2"];
+  if (!empty($_POST["listaCant"])) {
+    // echo $_POST["lista2"];
+    $idC= $_POST["lista2"];
+    $cant= $_POST["listaCant"];
+    $nota= $_POST["nota"];
+    // echo $idC;
+    $sqlId= $conexion->query ("UPDATE `elementos` SET `existencias`= `existencias`+$cant, `observacion` = '$nota' WHERE `elementos`.`idElemento` = $idC");
+    if ($sqlId==1) {
+      header ("Location:../views/entradas.php");
+      echo '<div class="alert alert-success text-center"><strong>Elementos agregados.</strong></div>';
+      } else {
+        header ("Location:../views/entradas.php");
+        echo '<div class="alert alert-danger text-center"><strong>ERROR No se agregaron los elementos.</strong></div>';
+  }
   
-  $sqlId= $conexion->query ("SELECT * FROM elementos WHERE idElemento= 'lista2' ");
+  
+  
+  
+  }
+  else {
+    header ("Location:../views/entradas.php");
+    echo '<div class="alert alert-danger text-center"><strong>Nada para actualizar.</strong></div>';
+}
 
-  echo $sqlId;
-     
-  // if (!empty($_POST["listaCant"])) { 
-  //     $cant= $_POST["listaCant"];
-  //     $not= $_POST["listaNota"];
-            
-  //     $sql= $conexion->query ("UPDATE elementos AS e, categorias AS c, tallas AS t SET e.existencias= '$cant' WHERE e.idElemento= '$id' ");
 
-  //     if ($sql==1) {
-  //         header ("Location:../views/entradas.php");
-  //         echo '<div class="alert alert-success text-center"><strong>Elementos agregados.</strong></div>';
-           
-  //       } else {
-  //         header ("Location:../views/entradas.php");
-  //         echo '<div class="alert alert-danger text-center"><strong>ERROR No se agregaron los elementos.</strong></div>';
-  //     }
-       
-  //     }else {
-  //     echo '<div class="alert alert-warning text-center"><strong>Todos los campos son obligatorios.</strong></div>';
-      
-  //     }
-}          
- 
+
+
+}
 ?>
