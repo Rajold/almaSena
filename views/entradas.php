@@ -77,7 +77,7 @@ if (empty($_SESSION['id'])) {
 include '../controllers/delElements.controller.php';
 ?>		
 
-<form action="../controllers/addElements.controller.php?idL=<?= 'select2lista'?>" method="post">
+<form action="../controllers/addElements.controller.php" method="post">
 		<div class="input-group mb-3">
 			<span class="input-group-text bg-success-subtle border-primary" id="">Categoría></span>
 			<select class="listaCat form-select pe-5 border-primary" id="listaCat" name="listaCat">
@@ -101,21 +101,6 @@ include '../controllers/delElements.controller.php';
 		</div> -->
 
 		<div class="input-group mb-3">	
-			<!-- <span class="input-group-text bg-success-subtle border-primary" id="">Color></span>
-			<select class="listaColor form-select pe-5 border-primary" id="listaColor" name="listaColor">
-				<option value="1"></option>
-				<option value="2">Varios</option>
-				<option value="3" >Negro</option>
-				<option value="4">Café</option>
-				<option value="5">Rojo</option>
-				<option value="6">Naranja</option>
-				<option value="7">Amarillo</option>
-				<option value="8">Verde</option>
-				<option value="9">Azul</option>
-				<option value="10">Violeta</option>
-				<option value="11">Gris</option>
-				<option value="12">Blaco</option>
-            </select> -->
 			<span class="input-group-text bg-success-subtle border-primary">Cantidad></span>
 			<input type="text" class="listaCant form-control border-primary" name="listaCant" >
 		</div>
@@ -217,7 +202,7 @@ include '../controllers/delElements.controller.php';
 		recargarLista();
 
 		$('#listaCat').change(function(){
-			recargarLista();
+			recargarLista(); 
 		});
 	})
 </script>

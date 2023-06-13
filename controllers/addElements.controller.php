@@ -18,30 +18,32 @@ $cadena="<span class='input-group-text bg-success-subtle border-primary'>Element
 
 //Agregar datos a la bd 
 if (!empty($_POST["btnAdd"])) {
-  $idE= $_POST['select2lista'];
-  $sqlId= $conexion->query ("SELECT * FROM elementos WHERE elemento= '$idE' ");
 
-  $id= $sqlId->idElemento??"no encontrado";
-  echo $id;    
-  if (!empty($_POST["listaCant"])) { 
-      $cant= $_POST["listaCant"];
-      $not= $_POST["listaNota"];
+  echo $_POST["lista2"];
+  
+  $sqlId= $conexion->query ("SELECT * FROM elementos WHERE idElemento= 'lista2' ");
+
+  echo $sqlId;
+     
+  // if (!empty($_POST["listaCant"])) { 
+  //     $cant= $_POST["listaCant"];
+  //     $not= $_POST["listaNota"];
             
-      $sql= $conexion->query ("UPDATE elementos AS e, categorias AS c, tallas AS t SET e.existencias= '$cant' WHERE e.idElemento= '$id' ");
+  //     $sql= $conexion->query ("UPDATE elementos AS e, categorias AS c, tallas AS t SET e.existencias= '$cant' WHERE e.idElemento= '$id' ");
 
-      if ($sql==1) {
-          header ("Location:../views/entradas.php");
-          echo '<div class="alert alert-success text-center"><strong>Elementos agregados.</strong></div>';
+  //     if ($sql==1) {
+  //         header ("Location:../views/entradas.php");
+  //         echo '<div class="alert alert-success text-center"><strong>Elementos agregados.</strong></div>';
            
-        } else {
-          header ("Location:../views/entradas.php");
-          echo '<div class="alert alert-danger text-center"><strong>ERROR No se agregaron los elementos.</strong></div>';
-      }
+  //       } else {
+  //         header ("Location:../views/entradas.php");
+  //         echo '<div class="alert alert-danger text-center"><strong>ERROR No se agregaron los elementos.</strong></div>';
+  //     }
        
-      }else {
-      echo '<div class="alert alert-warning text-center"><strong>Todos los campos son obligatorios.</strong></div>';
+  //     }else {
+  //     echo '<div class="alert alert-warning text-center"><strong>Todos los campos son obligatorios.</strong></div>';
       
-      }
+  //     }
 }          
  
 ?>
