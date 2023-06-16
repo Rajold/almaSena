@@ -37,6 +37,9 @@ if (empty($_SESSION['id'])) {
           <li class="nav-item">
             <a class="nav-link nav-link border-primary-subtle bg-info-subtle" href="cambios.php">Cambios</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link border-primary-subtle bg-info-subtle" href="usuariosGestionar.php">Gestionar Usuarios Cliente</a>
+          </li>
         </ul>
       </div>
       <div class="col-1">
@@ -206,6 +209,30 @@ if (empty($_SESSION['id'])) {
     </div>
   </div>
 
+<!-- Script para los elementos select -->
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#dniCode').val(1);
+		recargarLista();
+
+		$('#dniCode').change(function(){
+			recargarLista(); 
+		});
+	})
+</script>
+
+<script type="text/javascript">
+	function recargarLista(){
+		$.ajax({
+			type:"POST",
+			url:"../controllers/addElements.controller.php",
+			data:"categoria=" + $('#dniCode').val(),
+			success:function(r){
+				$('#select2lista').html(r);
+			}
+		});
+	}
+</script>
 
 </body>
 

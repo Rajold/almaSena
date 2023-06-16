@@ -11,14 +11,40 @@
 <body>
     <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="entradas.html">Entradas</a>
+          <a class="nav-link active" aria-current="page" href="entradas.php">Entradas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="salidas.html">Salidas</a>
+          <a class="nav-link" href="salidas.php">Salidas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="cambios.html">Cambios</a>
+          <a class="nav-link" href="cambios.php">Cambios</a>
         </li>
       </ul>
+
+      <!-- Script para los elementos select -->
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#listaCat').val(1);
+		recargarLista();
+
+		$('#listaCat').change(function(){
+			recargarLista(); 
+		});
+	})
+</script>
+
+<script type="text/javascript">
+	function recargarLista(){
+		$.ajax({
+			type:"POST",
+			url:"../controllers/addElements.controller.php",
+			data:"categoria=" + $('#listaCat').val(),
+			success:function(r){
+				$('#select2lista').html(r);
+			}
+		});
+	}
+</script>
+
 </body>
 </html>
