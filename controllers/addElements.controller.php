@@ -6,7 +6,6 @@ $categoria=$_POST['categoria'];
 $sql="SELECT * FROM elementos as e, categorias as c, tallas AS t 
 where e.fkCategoria=c.idCategoria AND e.fkTalla= t.idTalla AND fkCategoria='$categoria'";
 
-
 $resultado=mysqli_query($conexion,$sql);
 $cadena="<span class='input-group-text bg-success-subtle border-primary'>Elemento</span>
 			<select class='listaElem form-select pe-5 border-primary' id='lista2' name='lista2'>";
@@ -34,17 +33,11 @@ if (!empty($_POST["btnAdd"])) {
         echo '<div class="alert alert-danger text-center"><strong>ERROR No se agregaron los elementos.</strong></div>';
   }
   
-  
-  
-  
   }
   else {
     header ("Location:../views/entradas.php");
     echo '<div class="alert alert-danger text-center"><strong>Nada para actualizar.</strong></div>';
 }
-
-
-
 
 }
 ?>

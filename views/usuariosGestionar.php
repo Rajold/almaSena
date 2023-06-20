@@ -89,7 +89,7 @@ if (empty($_SESSION['id'])) {
 				<td><?= $tableData->email?></td>
 				<td>
 <!-- Botón editar -->
-<a class="btn btn-small btn-warning" href="modificarElementos.php?id=<?= $tableData->idElemento?>"><svg
+<a class="btn btn-small btn-warning" href="usuariosEditar.php?id=<?= $tableData->id?>"><svg
 		xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 		class="bi bi-pencil-square" viewBox="0 0 16 16">
 		<path
