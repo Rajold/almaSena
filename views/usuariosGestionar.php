@@ -193,7 +193,7 @@ include ("../controllers/clientesCreateController.php");
                 <a
                   onclick="return eliminar()"
                   class="btn btn-small btn-danger"
-                  href="usuariosGestionar.php?id=<?= $tableData->id?>"
+                  href="usuariosGestionar.php?usrId=<?= $tableData->id?>"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -2,9 +2,11 @@
 include ("dbConection.php");
 //↓para auto rellenar el formulario
 
+if (isset($_POST['categoria'])) {
 $categoria=$_POST['categoria'];
 $sql="SELECT * FROM elementos as e, categorias as c, tallas AS t 
 where e.fkCategoria=c.idCategoria AND e.fkTalla= t.idTalla AND fkCategoria='$categoria'";
+
 
 $resultado=mysqli_query($conexion,$sql);
 $cadena="<span class='input-group-text bg-success-subtle border-primary'>Elemento</span>
@@ -15,7 +17,7 @@ $cadena="<span class='input-group-text bg-success-subtle border-primary'>Element
             }   
             echo  $cadena."</select>";
 // Fin auto rellenar el formulario
-
+}
 //Agregar datos a la bd 
 if (!empty($_POST["btnAdd"])) {
   if (!empty($_POST["listaCant"])) {

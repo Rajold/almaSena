@@ -3,11 +3,8 @@ session_start();
 if (empty($_SESSION['id'])) {
   header("Location:../index.php");
 }
-?>
-
-<?php
 		include ("../controllers/dbConection.php");
-		// include ("../controllers/captura.controller.php");
+		include ("../controllers/addElements.controller.php");
 		 ?>
 
 <!DOCTYPE html>
@@ -90,7 +87,7 @@ if (empty($_SESSION['id'])) {
         </div>
 
         <?php 
-include '../controllers/delElements.controller.php';
+//include '../controllers/delElements.controller.php';
 // include '../controllers/addElements.controller.php';
 ?>
 
@@ -214,10 +211,8 @@ include '../controllers/delElements.controller.php';
                 </a>
                 <!-- Botón eliminar -->
                 <a
-                  onclick="return eliminar()"
-                  class="btn btn-small btn-danger"
-                  href="entradas.php?id=<?= $tableData->idElemento?>"
-                >
+                  onclick="return eliminar('<?php echo $tableData->idElemento;?>')"
+                  class="btn btn-small btn-danger">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -285,11 +280,17 @@ include '../controllers/delElements.controller.php';
 
     <!-- ↓Script para confirmar eliminar elemento -->
     <script>
-      function eliminar() {
-        var confirmar = confirm(
-          "Está apunto de eliminar un registro, esta acción no se puede deshacer. Está seguro?"
-        );
-        return respuesta;
+      function eliminar(id) {
+       
+        var opcion = confirm("Clicka en Aceptar o Cancelar");
+             if (opcion == true) {
+             
+            
+              alert(id);
+        
+            } else {
+	          alert("Has clickado Cancelar");
+	      }
       }
     </script>
   </body>

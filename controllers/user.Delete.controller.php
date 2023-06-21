@@ -1,6 +1,6 @@
 <?php 
 // ↓Recoge el id enviado por el botón borrar de la vista entradas
-if (!empty($_GET['id'])) {
+if (!empty($_GET['usrId'])) {
     $id= $_GET['id'];
     $sqlDel= $conexion->query ("DELETE FROM elementos WHERE idElemento= '$id'");
 
