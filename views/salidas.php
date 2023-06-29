@@ -69,7 +69,7 @@ if(isset($_GET['enviar'])){
   
 <hr>
   <div class="form-floating input-group mt-1 justify-content-center align-items-center">
-    <H2>Ingrese la identificación del Usuario a quien se entregarán los elementos.</H2>
+    <H2>A quién se entregarán los elementos?</H2>
   </div>
 
   <div class="d-flex justify-content-center align-items-center vh-800">
@@ -93,6 +93,7 @@ if(isset($_GET['enviar'])){
                         <th>Correo</th>
                         <th>Telefono</th>
                         <th>Rol</th>
+                        <th>Función</th>
                         </tr>
                         </thead>
                         <tbody>
