@@ -89,7 +89,7 @@ if (empty($_SESSION['id'])) {
           class="w-100 d-flex justify-content-center align-items-center border-primary mb-3"
         >
           <span class="bg-danger rounded p-1 text-white">
-            Agregar elementos al inventario.</span
+            Agregar existencias al inventario.</span
           >
         </div>
 

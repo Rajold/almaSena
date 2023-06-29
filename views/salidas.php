@@ -110,7 +110,7 @@ if($dato -> num_rows >0){
     
 ?>
 <tr>
-<td><?php echo $fila['user']; ?></td>
+<td><a class="text-white text-uppercase text-decoration-none" href=""><?php echo $fila['user']; ?></a></td>
 <td><?php echo $fila['email']; ?></td>
 <td><?php echo $fila['telefono']; ?></td>
 <td><?php echo $fila['rol']; ?></td>
