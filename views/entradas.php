@@ -55,6 +55,13 @@ if (empty($_SESSION['id'])) {
               >Cambios</a
             >
           </li>
+          <li class="nav-item">
+            <a
+              class="nav-link border-primary-subtle bg-info-subtle"
+              href="elementosGestionar.php"
+              >Agregar un elemento nuevo.</a
+            >
+          </li>
         </ul>
       </div>
       <!-- Salir-LogOut -->
@@ -87,8 +94,8 @@ if (empty($_SESSION['id'])) {
         </div>
 
         <?php 
-//include '../controllers/delElements.controller.php';
-// include '../controllers/addElements.controller.php';
+include '../controllers/delElements.controller.php';
+include '../controllers/addElements.controller.php';
 ?>
 
         <form action="../controllers/addElements.controller.php" method="post">
@@ -96,7 +103,7 @@ if (empty($_SESSION['id'])) {
             <span
               class="input-group-text bg-success-subtle border-primary"
               id=""
-              >Categoría></span
+              >Categoría</span
             >
             <select
               class="listaCat form-select pe-5 border-primary"
@@ -127,7 +134,7 @@ if (empty($_SESSION['id'])) {
 
           <div class="input-group mb-3">
             <span class="input-group-text bg-success-subtle border-primary"
-              >Cantidad></span
+              >Cantidad</span
             >
             <input
               type="text"

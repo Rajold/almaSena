@@ -7,7 +7,7 @@ if (empty($_SESSION['id'])) {
 
 <?php
 		include ("../controllers/dbConection.php");
-		 ?>
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -35,9 +35,9 @@ if (empty($_SESSION['id'])) {
     <div class="container-fluid">
       <div class="row">
         <div class="btn border-info bg-success text-white mt-4 shadow-sm col-2">
-          <a class="nav-link border-primary-subtle" href="usuariosCrear.php"
-            >Agregar un nuevo Usuario</a
-          >
+          <?php 
+          echo $_SESSION["nombre"]
+        ?>
         </div>
         <div class="col-9 justify-content-center">
           <ul class="nav nav-tabs">
@@ -63,7 +63,7 @@ if (empty($_SESSION['id'])) {
               >
             </li>
             <li class="nav-item">
-              <p class="nav-link active">Gestionar Usuarios Cliente</p>
+              <p class="nav-link active">Agregar elementos al inventario</p>
             </li>
           </ul>
         </div>
@@ -90,51 +90,93 @@ if (empty($_SESSION['id'])) {
       <!-- Formulario de adición -->
       <div class="col-4">
         <!-- Título-Title -->
-        <div
+        <!-- <div
           class="w-100 d-flex justify-content-center align-items-center border-primary mb-3"
         >
           <span class="bg-danger rounded p-1 text-white">
             Agregar Usuario para nueva entrega.</span
           >
-        </div>
+        </div> -->
 
         <?php 
-include ("../controllers/clientesCreateController.php");
+include ("../controllers/elementosGestionarController.php");
 ?>
 
-        <form action="" method="post">
-          <div class="input-group mb-3">
+        <form action="../controllers/addElements.controller.php" method="post">
+        <div class="input-group mb-3">
             <span
               class="input-group-text bg-success-subtle border-primary"
-              id="">Identificación
-            </span>
-            <input
-            type="text"
-              class="uDni form-control border-primary"
-              name="uDni"
-            />
+              id=""
+              >Categoría</span
+            >
+            <select
+              class="listaCat form-select pe-5 border-primary"
+              id="listaCat"
+              name="listaCat"
+            >
+              <option value="1">Seleccione una</option>
+              <option value="2">Protección de la cabeza</option>
+              <option value="3">Protección visual</option>
+              <option value="4">Protección auditiva</option>
+              <option value="5">Respiratorio</option>
+              <option value="6">Prendas</option>
+              <option value="7">Calzado</option>
+            </select>
           </div>
 
-          <div class="input-group mb-3">
+          <!-- contenedor para el select nombre -->
+          <div
+            class="input-group mb-3"
+            id="select2lista"
+            name="select2lista"
+          ></div>
+        <div class="input-group mb-3">
             <span class="input-group-text bg-success-subtle border-primary"
-              >Nombre</span
+              >Nueva Categoría</span
             >
             <input
               type="text"
-              class="uName form-control border-primary"
-              name="uName"
-            />
+              class="listaCant form-control border-primary"
+              name="listaCant"/>
           </div>
 
+          <!-- contenedor para el select nombre -->
+          <div
+            class="input-group mb-3"
+            id="select2lista"
+            name="select2lista"
+          ></div>
+          <div class="input-group mb-3">
+			<span class="input-group-text bg-success-subtle border-primary">Talla</span>
+			<input type="text" class="form-control border-primary" name="talla">
+		</div>
+          <div class="input-group mb-3">
+			<span class="input-group-text bg-success-subtle border-primary">Marca</span>
+			<input type="text" class="form-control border-primary" name="marca">
+		</div>
+    <div class="input-group mb-3">
+			<span class="input-group-text bg-success-subtle border-primary">color</span>
+			<input type="text" class="form-control border-primary" name="color">
+		</div>
           <div class="input-group mb-3">
             <span class="input-group-text bg-success-subtle border-primary"
-              >Correo</span
+              >Cantidad</span
             >
             <input
               type="text"
-              class="uMail form-control border-primary"
-              name="uMail"
-            />
+              class="listaCant form-control border-primary"
+              name="listaCant"/>
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-text bg-success-subtle border-primary"
+              >Nota:</span
+            >
+            <textarea
+              class="listaNota form-control border-primary"
+              name="nota"
+              aria-label="With textarea"
+            ></textarea>
           </div>
 
           <div>
@@ -147,30 +189,41 @@ include ("../controllers/clientesCreateController.php");
           </div>
         </form>
       </div>
-      <!-- Listado de elementos -->
-      <div class="col-8">
+      <!-- ------------------------------------------------------------------------------------------------------ -->
+
+       <!-- Listado de elementos -->
+       <div class="col-8">
         <table class="table table-bordered border-primary">
           <thead class="bg-info">
             <tr>
-              <th scope="col">Identificacion</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Correo</th>
-              <th scope="col">Editar/Borrar</th>
+              <th scope="col">Categoría</th>
+              <th scope="col">Elemento</th>
+              <th scope="col">Talla</th>
+              <th scope="col">Marca</th>
+              <th scope="col">Color</th>
+              <th scope="col">Existencias</th>
+              <th scope="col">Observación</th>
+              <th scope="col">Edición</th>
             </tr>
           </thead>
           <tbody>
             <?php
-		$sqlElm= $conexion->query("SELECT * FROM `usuarios` WHERE rol='cliente'");
+		$sqlElm= $conexion->query("SELECT * FROM elementos as e, categorias as c, tallas
+            as t where e.fkCategoria=c.idCategoria AND e.fkTalla=t.idTalla");
             while($tableData= $sqlElm->fetch_object()) { ?>
             <tr>
-              <td><?= $tableData->id?></td>
-              <td><?= $tableData->user?></td>
-              <td><?= $tableData->email?></td>
+              <td><?= $tableData->nombreCat?></td>
+              <td><?= $tableData->elemento?></td>
+              <td><?= $tableData->tallas?></td>
+              <td><?= $tableData->marca?></td>
+              <td><?= $tableData->color?></td>
+              <td><?= $tableData->existencias?></td>
+              <td><?= $tableData->observacion?></td>
               <td>
                 <!-- Botón editar -->
                 <a
                   class="btn btn-small btn-warning"
-                  href="usuariosEditar.php?id=<?= $tableData->id?>"
+                  href="modificarElementos.php?id=<?= $tableData->idElemento?>"
                   ><svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -190,10 +243,8 @@ include ("../controllers/clientesCreateController.php");
                 </a>
                 <!-- Botón eliminar -->
                 <a
-                  onclick="return eliminar()"
-                  class="btn btn-small btn-danger"
-                  href="usuariosGestionar.php?usrId=<?= $tableData->id?>"
-                >
+                  onclick="return eliminar('<?php echo $tableData->idElemento;?>')"
+                  class="btn btn-small btn-danger">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -217,7 +268,6 @@ include ("../controllers/clientesCreateController.php");
         </table>
       </div>
     </div>
-
     <hr />
     <!-- fin de formulario -->
 
@@ -234,8 +284,31 @@ include ("../controllers/clientesCreateController.php");
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    
 
+    <!-- Script para los elementos select -->
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("#listaCat").val(1);
+        recargarLista();
+
+        $("#listaCat").change(function () {
+          recargarLista();
+        });
+      });
+    </script>
+
+    <script type="text/javascript">
+      function recargarLista() {
+        $.ajax({
+          type: "POST",
+          url: "../controllers/addElements.controller.php",
+          data: "categoria=" + $("#listaCat").val(),
+          success: function (r) {
+            $("#select2lista").html(r);
+          },
+        });
+      }
+    </script>
     <!-- ↓Script para confirmar eliminar elemento -->
     <script>
       function eliminar() {
