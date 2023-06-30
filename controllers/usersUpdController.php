@@ -7,6 +7,7 @@ if (!empty($_POST['btnUpd'])){
      
     $Id= $_POST['inputId'];  // ←llama el ide que recogió el input oculto en la vista
     $Name= $_POST['inputNam'];
+    $Tel= $_POST['inputTel'];
     $Mail= $_POST['inputMail'];
     // $Rol= $_POST['inputRol'];
     
@@ -17,7 +18,7 @@ if (!empty($_POST['btnUpd'])){
       $Id= $dataUsr->id;
     }
 
-  $sqlUpd= $conexion->query("UPDATE usuarios SET user='$Name', email= '$Mail' WHERE id='$Id' "); 
+  $sqlUpd= $conexion->query("UPDATE usuarios SET user='$Name', telefono='$Tel', email= '$Mail' WHERE id='$Id' "); 
 
 if ($sqlUpd==1) {
   // header ("Location:../views/entradas.php");

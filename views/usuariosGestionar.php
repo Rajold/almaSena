@@ -127,6 +127,18 @@ include ("../controllers/clientesCreateController.php");
           </div>
 
           <div class="input-group mb-3">
+            <span
+              class="input-group-text bg-success-subtle border-primary"
+              id="">Teléfono
+            </span>
+            <input
+            type="text"
+              class="uDni form-control border-primary"
+              name="uDni"
+            />
+          </div>
+
+          <div class="input-group mb-3">
             <span class="input-group-text bg-success-subtle border-primary"
               >Correo</span
             >
@@ -154,6 +166,7 @@ include ("../controllers/clientesCreateController.php");
             <tr>
               <th scope="col">Identificacion</th>
               <th scope="col">Nombre</th>
+              <th>teléfono</th>
               <th scope="col">Correo</th>
               <th scope="col">Editar/Borrar</th>
             </tr>
@@ -165,6 +178,7 @@ include ("../controllers/clientesCreateController.php");
             <tr>
               <td><?= $tableData->id?></td>
               <td><?= $tableData->user?></td>
+              <td><?= $tableData->telefono?></td>
               <td><?= $tableData->email?></td>
               <td>
                 <!-- Botón editar -->

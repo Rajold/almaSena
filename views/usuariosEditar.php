@@ -87,6 +87,11 @@ if (empty($_SESSION['id'])) {
 			      <input select class="inputUser pe-5 form-control border-primary" id="inputNam" name="inputNam" value="<?= $elmData->user?>">
 		      </div>
 
+			  <div class="input-group mb-3">
+			      <span class="input-group-text bg-success-subtle border-primary" id="">Teléfono</span>
+			      <input select class="inputUser pe-5 form-control border-primary" id="inputNam" name="inputTel" value="<?= $elmData->telefono?>">
+		      </div>	  
+
           <div class="input-group mb-3">
 			      <span class="input-group-text bg-success-subtle border-primary" id="">Correo</span>
 			      <input select class="inputMail pe-5 form-control border-primary" id="inputMail" name="inputMail" value="<?= $elmData->email?>">
@@ -115,6 +120,7 @@ if (empty($_SESSION['id'])) {
 				<tr>
 					<th scope="col">Identificación</th>
 					<th scope="col">Nombre</th>
+					<th>Teléfono</th>
 					<th scope="col">Correo</th>
 					<th scope="col">Rol</th>
 				</tr>
@@ -127,6 +133,7 @@ if (empty($_SESSION['id'])) {
 			<tr>
 				<td><?= $tableData->id?></td>
 				<td><?= $tableData->user?></td>
+				<td><?= $tableData->telefono?></td>
 				<td><?= $tableData->email?></td>
 				<td><?= $tableData->rol?></td>
 				<td>

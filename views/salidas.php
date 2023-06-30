@@ -73,12 +73,12 @@ if(isset($_GET['enviar'])){
   </div>
 
   <div class="d-flex justify-content-center align-items-center vh-800">
-    <div class=" p-5 rounded-5 text-secondary shadow" style="width: 50rem">
+    <div class=" p-5 rounded-5 text-secondary shadow" style="width: 70rem">
 
 <!-- Buscar usuario -->
 <form class="d-flex">
       <input class="form-control me-2 light-table-filter" data-table="table_id" type="text" 
-      placeholder="Ingrese el número de identificación">
+      placeholder="Buscar usuario para nueva entrega">
       <hr>
       </form>
       <br>
@@ -90,6 +90,7 @@ if(isset($_GET['enviar'])){
                          <thead>    
                          <tr>
                         <th>Nombre</th>
+                        <th>Identificación</th>
                         <th>Correo</th>
                         <th>Telefono</th>
                         <th>Rol</th>
@@ -111,6 +112,7 @@ if($dato -> num_rows >0){
 ?>
 <tr>
 <td><a class="text-white text-uppercase text-decoration-none" href=""><?php echo $fila['user']; ?></a></td>
+<td><?php echo $fila['id']; ?></td>
 <td><?php echo $fila['email']; ?></td>
 <td><?php echo $fila['telefono']; ?></td>
 <td><?php echo $fila['rol']; ?></td>

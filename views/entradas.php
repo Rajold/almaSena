@@ -110,7 +110,7 @@ include '../controllers/addElements.controller.php';
               id="listaCat"
               name="listaCat"
             >
-              <option value="1">Seleccione una</option>
+              <option value="1">Seleccione</option>
               <option value="2">Protección de la cabeza</option>
               <option value="3">Protección visual</option>
               <option value="4">Protección auditiva</option>
