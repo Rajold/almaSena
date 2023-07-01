@@ -133,8 +133,8 @@ include ("../controllers/clientesCreateController.php");
             </span>
             <input
             type="text"
-              class="uDni form-control border-primary"
-              name="uDni"
+              class="uTel form-control border-primary"
+              name="uTel"
             />
           </div>
 

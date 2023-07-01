@@ -109,10 +109,10 @@ if($dato -> num_rows >0){
     
 ?>
 <tr>
-<td><a class="text-black text-uppercase text-decoration-none" href="salidasP2.php?id=<?= $fila['id']?>"><?php echo $fila['user']; ?></a></td>
-<td><a class="text-black text-uppercase text-decoration-none" href="salidasP2.php?id=<?= $fila['id']?>"><?php echo $fila['id']; ?></a></td>
-<td><a class="text-black text-uppercase text-decoration-none" href="salidasP2.php?id=<?= $fila['id']?>"><?php echo $fila['email']; ?></a></td>
-<td><a class="text-black text-uppercase text-decoration-none" href="salidasP2.php?id=<?= $fila['id']?>"><?php echo $fila['telefono']; ?></a></td>
+<td><a class="text-black text-uppercase text-decoration-none" href=""><?php echo $fila['user']; ?></a></td>
+<td><a class="text-black text-uppercase text-decoration-none" href=""><?php echo $fila['id']; ?></a></td>
+<td><a class="text-black text-uppercase text-decoration-none" href=""><?php echo $fila['email']; ?></a></td>
+<td><a class="text-black text-uppercase text-decoration-none" href=""><?php echo $fila['telefono']; ?></a></td>
 
 
 
