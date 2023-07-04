@@ -69,18 +69,18 @@ if(isset($_GET['enviar'])){
   
 <hr>
   <div class="form-floating input-group mt-1 justify-content-center align-items-center">
-    <H2>A quién se entregarán los elementos?</H2>
+    <H2>Relacione los elementos para la entrega</H2>
   </div>
+<div class="container-fluid row">
+  
+    <div class="col-8  p-5 rounded-5 text-secondary shadow" >
 
-  <div class="d-flex justify-content-center align-items-center vh-800">
-    <div class=" p-5 rounded-5 text-secondary shadow" style="width: 70rem">
-
-<!-- Buscar usuario -->
+<!-- Buscar elemento -->
 <form class="d-flex">
       <input class="form-control me-2 light-table-filter" data-table="table_id" type="text" 
-      placeholder="Buscar usuario para nueva entrega">
+      placeholder="Buscar elemento para nueva entrega">
       <hr>
-      </form>
+</form>
       <br>
 
  
@@ -89,10 +89,14 @@ if(isset($_GET['enviar'])){
                    
                          <thead>    
                          <tr>
-                        <th>Nombre</th>
-                        <th>Identificación</th>
-                        <th>Correo</th>
-                        <th>Telefono</th>
+                        <th>Categoría</th>
+                        <th>Elemento</th>
+                        <th>Talla</th>
+                        <th>Marca</th>
+                        <th>Color</th>
+                        <th>Existencias</th>
+                        <th>Observación</th>
+                        <th>Añadir a lista</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -100,7 +104,8 @@ if(isset($_GET['enviar'])){
                         <?php
 
 $conexion=mysqli_connect("localhost","root","","almasenadb");               
-$SQL="SELECT usuarios.id, usuarios.user, usuarios.email, usuarios.telefono, usuarios.rol FROM usuarios
+$SQL="SELECT * FROM elementos as e, categorias as c, tallas
+as t where e.fkCategoria=c.idCategoria AND e.fkTalla=t.idTalla
 $where";
 $dato = mysqli_query($conexion, $SQL);
 
@@ -109,63 +114,34 @@ if($dato -> num_rows >0){
     
 ?>
 <tr>
-<td><a class="text-black text-uppercase text-decoration-none" href=""><?php echo $fila['user']; ?></a></td>
-<td><a class="text-black text-uppercase text-decoration-none" href=""><?php echo $fila['id']; ?></a></td>
-<td><a class="text-black text-uppercase text-decoration-none" href=""><?php echo $fila['email']; ?></a></td>
-<td><a class="text-black text-uppercase text-decoration-none" href=""><?php echo $fila['telefono']; ?></a></td>
-
-
-
-
+<td><?php echo $fila['nombreCat']; ?></td>
+<td><?php echo $fila['elemento']; ?></td>
+<td><?php echo $fila['tallas']; ?></td>
+<td><?php echo $fila['marca']; ?></td>
+<td><?php echo $fila['color']; ?></td>
+<td><?php echo $fila['existencias']; ?></td>
+<td><?php echo $fila['observacion']; ?></a></td>
+<td><a class="text-black text-uppercase text-decoration-none" href="salidasPage2.php?id=<?= $fila['idElemento']?>">Check</a></td>
 </tr>
-
 
 <?php
 }
 }else{
-
     ?>
     <tr class="text-center">
     <td colspan="16">No existen registros</td>
     </tr>
-
-    
     <?php
-    
 }
 
 ?>
-
-      <!-- inicio formulario -->
-
-      <!-- fin de formulario -->
     </div>
+    <div >
+      <div class="canasta col-1"><p>test text</p></div>
+    </div>
+    
   </div>
 
-<!-- Script para los elementos select -->
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('#dniCode').val(1);
-		recargarLista();
-
-		$('#dniCode').change(function(){
-			recargarLista(); 
-		});
-	})
-</script>
-
-<script type="text/javascript">
-	function recargarLista(){
-		$.ajax({
-			type:"POST",
-			url:"../controllers/addElements.controller.php",
-			data:"categoria=" + $('#dniCode').val(),
-			success:function(r){
-				$('#select2lista').html(r);
-			}
-		});
-	}
-</script>
 <script src="../js/acciones.js"></script>
 <script src="../js/buscador.js"></script>
 
