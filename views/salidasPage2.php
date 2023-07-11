@@ -24,22 +24,22 @@ if (empty($_SESSION['id'])) {
         <?php 
           echo $_SESSION["nombre"]
         ?>
-        <?php
-$conexion=mysqli_connect("localhost","root","","almasenadb"); 
-$where="";
+        <!-- <?php
+// $conexion=mysqli_connect("localhost","root","","almasenadb"); 
+// $where="";
 
-if(isset($_GET['enviar'])){
-  $busqueda = $_GET['busqueda'];
+// if(isset($_GET['enviar'])){
+//   $busqueda = $_GET['busqueda'];
 
 
-	if (isset($_GET['busqueda']))
-	{
-		$where="WHERE user.correo LIKE'%".$busqueda."%' OR nombre  LIKE'%".$busqueda."%'
-    OR telefono  LIKE'%".$busqueda."%'";
-	}
+// 	if (isset($_GET['busqueda']))
+// 	{
+// 		$where="WHERE user.correo LIKE'%".$busqueda."%' OR nombre  LIKE'%".$busqueda."%'
+//     OR telefono  LIKE'%".$busqueda."%'";
+// 	}
   
-}
-?>
+// }
+?> -->
       </div>
 
       <div class="col-9">
@@ -66,24 +66,28 @@ if(isset($_GET['enviar'])){
         </div>
       </div>
     </div>
+  </div>
   
 <hr>
-  <div class="form-floating input-group mt-1 justify-content-center align-items-center">
-    <H2>Relacione los elementos para la entrega</H2>
+  <div class="container">
+    <div class="row">
+      <div class="col-11 ">
+        <H2>Relacione los elementos para la entrega</H2>
+      </div>
+      <div class="col ">
+         <button>Lista</button> 
+      </div>
+    </div>
   </div>
-<div class="container-fluid row">
-  
-    <div class="col-8  p-5 rounded-5 text-secondary shadow" >
+ 
+<div class="container-fluid">
+    <div class="p-4 rounded-5 shadow">
 
 <!-- Buscar elemento -->
-<form class="d-flex">
+
       <input class="form-control me-2 light-table-filter" data-table="table_id" type="text" 
       placeholder="Buscar elemento para nueva entrega">
-      <hr>
-</form>
-      <br>
 
- 
       <table class="table table-striped table_id ">
 
                    
@@ -94,25 +98,25 @@ if(isset($_GET['enviar'])){
                         <th>Talla</th>
                         <th>Marca</th>
                         <th>Color</th>
-                        <th>Existencias</th>
+                        <th>Disponibles</th>
                         <th>Observación</th>
-                        <th>Añadir a lista</th>
+                        <th>Estado</th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        <?php
+<?php
 
 $conexion=mysqli_connect("localhost","root","","almasenadb");               
 $SQL="SELECT * FROM elementos as e, categorias as c, tallas
 as t where e.fkCategoria=c.idCategoria AND e.fkTalla=t.idTalla
-$where";
+"; //$where
 $dato = mysqli_query($conexion, $SQL);
 
 if($dato -> num_rows >0){
     while($fila=mysqli_fetch_array($dato)){
-    
 ?>
+
 <tr>
 <td><?php echo $fila['nombreCat']; ?></td>
 <td><?php echo $fila['elemento']; ?></td>
@@ -121,6 +125,7 @@ if($dato -> num_rows >0){
 <td><?php echo $fila['color']; ?></td>
 <td><?php echo $fila['existencias']; ?></td>
 <td><?php echo $fila['observacion']; ?></a></td>
+
 <td><a class="text-black text-uppercase text-decoration-none" href="salidasPage2.php?id=<?= $fila['idElemento']?>">Check</a></td>
 </tr>
 
@@ -129,18 +134,18 @@ if($dato -> num_rows >0){
 }else{
     ?>
     <tr class="text-center">
-    <td colspan="16">No existen registros</td>
+    <td colspan="7">No existen registros</td>
     </tr>
     <?php
 }
-
 ?>
     </div>
-    <div >
-      <div class="canasta col-1"><p>test text</p></div>
-    </div>
+    
     
   </div>
+  
+
+
 
 <script src="../js/acciones.js"></script>
 <script src="../js/buscador.js"></script>
