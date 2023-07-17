@@ -62,7 +62,7 @@ if (empty($_SESSION['id'])) {
         <div>
           <button class="btn btn-danger w-100 mt-4 shadow-sm "><a class="text-decoration-none text-white"
               href="../controllers/logout.php">Salir</a></button>
-          <i class="bi bi-box-arrow-left"></i>
+          
         </div>
       </div>
     </div>
@@ -71,15 +71,19 @@ if (empty($_SESSION['id'])) {
 <hr>
   <div class="container">
     <div class="row">
-      <div class="col-11 ">
+      <div class="col-10 ">
         <H2>Relacione los elementos para la entrega</H2>
       </div>
       <div class="col ">
-         <button>Lista</button> 
+<button class="btn btn-success  shadow-sm "><a class="text-decoration-none text-white"
+              href="../controllers/logout.php">Ver Lista 
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+              </svg></a></button>
       </div>
     </div>
   </div>
- 
+
 <div class="container-fluid">
     <div class="p-4 rounded-5 shadow">
 
@@ -93,13 +97,14 @@ if (empty($_SESSION['id'])) {
                    
                          <thead>    
                          <tr>
-                        <th>Categoría</th>
+                        <!-- <th>Categoría</th> -->
                         <th>Elemento</th>
                         <th>Talla</th>
-                        <th>Marca</th>
-                        <th>Color</th>
+                        <!-- <th>Marca</th> -->
+                        <!-- <th>Color</th> -->
                         <th>Disponibles</th>
                         <th>Observación</th>
+                        <th>Cantidad solicitada</th>
                         <th>Estado</th>
                         </tr>
                         </thead>
@@ -110,22 +115,28 @@ if (empty($_SESSION['id'])) {
 $conexion=mysqli_connect("localhost","root","","almasenadb");               
 $SQL="SELECT * FROM elementos as e, categorias as c, tallas
 as t where e.fkCategoria=c.idCategoria AND e.fkTalla=t.idTalla
-"; //$where
+"; 
+ //$where
 $dato = mysqli_query($conexion, $SQL);
-
-if($dato -> num_rows >0){
-    while($fila=mysqli_fetch_array($dato)){
+$resultado= mysqli_num_rows($dato);
 ?>
 
+<h5>Encontrados <?php echo $resultado; ?> elementos </h5>
+<?php
+if($dato -> num_rows >0){
+while($fila=mysqli_fetch_array($dato)){
+?>
+
+
 <tr>
-<td><?php echo $fila['nombreCat']; ?></td>
+<!-- <td><?php echo $fila['nombreCat']; ?></td> -->
 <td><?php echo $fila['elemento']; ?></td>
 <td><?php echo $fila['tallas']; ?></td>
-<td><?php echo $fila['marca']; ?></td>
-<td><?php echo $fila['color']; ?></td>
+<!-- <td><?php echo $fila['marca']; ?></td> -->
+<!-- <td><?php echo $fila['color']; ?></td> -->
 <td><?php echo $fila['existencias']; ?></td>
 <td><?php echo $fila['observacion']; ?></a></td>
-
+<td><input type="text" name= "cantSol"></td>
 <td><a class="text-black text-uppercase text-decoration-none" href="salidasPage2.php?id=<?= $fila['idElemento']?>">Check</a></td>
 </tr>
 
