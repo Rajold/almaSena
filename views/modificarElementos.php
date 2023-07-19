@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (empty($_SESSION['id'])) {
-  header("Location:../index.php");
+header("Location:../index.php");
 }
 ?>
 
@@ -30,98 +30,97 @@ if (empty($_SESSION['id'])) {
 </head>
 
 <body class="vh-100">
-  
-  <!-- ↓Tabs-Pestañas  -->
-  <div class="container-fluid">
+
+<!-- ↓Tabs-Pestañas  -->
+<div class="container-fluid">
     <div class="row">
-      <div class="col-2 btn border-info bg-success text-white mt-2 shadow-sm ">
+    <div class="col-2 btn border-info bg-success text-white mt-2 shadow-sm ">
         <?php 
-          echo $_SESSION["nombre"]
+    echo $_SESSION["nombre"]
         ?>
-      </div>
-      <!-- ↓Título-Title -->
-      <div class="col-9">
-		    <ul class="nav nav-tabs">
-          <li class="nav-item">
+    </div>
+    <!-- ↓Título-Title -->
+    <div class="col-9">
+	    <ul class="nav nav-tabs">
+            <li class="nav-item">
             <a class="nav-link nav-link border-primary-subtle bg-info-subtle" aria-current="page" href="entradas.php">Entradas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link border-primary-subtle bg-info-subtle" href="salidas.php">Salidas</a>
-          </li>
-          <li class="nav-item">
+    </li>
+    <li class="nav-item">
+        <a class="nav-link nav-link border-primary-subtle bg-info-subtle" href="salidas.php">Salidas</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link nav-link border-primary-subtle bg-info-subtle" href="cambios.php">Cambios</a>
-          </li>
-          <li class="nav-item">
+        </li>
+        <li class="nav-item">
             <p class="nav-link active">Editar Elementos</p>
-          </li>
+        </li>
         </ul>
     	</div>
-      <!-- ↓Salir-LogOut -->
-      <div class="col-1">
+    <!-- ↓Salir-LogOut -->
+    <div class="col-1">
         <button class="btn btn-danger w-100 mt-2 shadow-sm "><a class="text-decoration-none text-white"
-          href="../controllers/logout.php">Salir</a>
+        href="../controllers/logout.php">Salir</a>
         </button>
         <i class="bi bi-box-arrow-left"></i>
-      </div>
+    </div>
     </div>
     <hr>
 
 
     <!-- ↓Contenedor formulario -Form container -->
-  <div class="container-fluid">
+<div class="container-fluid">
 	<div class="row">
 		<!-- ↓Formulario de adición -->
     <div class="col-4">
-      <form action="" method="post">
+    <form action="" method="post">
         <!-- ↓Input oculto recoje el id recibido desde la vista, Permite llamarlo desde el controlador -->
-      <input type="inputId" id="inputId" name="inputId" value="<?= $_GET['id'] ?>" hidden="true">
+    <input type="inputId" id="inputId" name="inputId" value="<?= $_GET['id'] ?>" hidden="true">
         <?php 
         include ("../controllers/updElements.controller.php");
         while($elmData= $sql->fetch_object()) { ?>
-          
-          <div class="input-group mb-3">
-			      <span class="input-group-text bg-success-subtle border-primary" id="">Categoría></span>
-			      <input select class="inputCat pe-5 form-control border-primary" id="inputCat" name="inputCat" value="<?= $elmData->nombreCat?>">
-		      </div>
+        <div class="input-group mb-3">
+			    <span class="input-group-text bg-success-subtle border-primary" id="">Categoría></span>
+			    <input select class="inputCat pe-5 form-control border-primary" id="inputCat" name="inputCat" value="<?= $elmData->nombreCat?>">
+		    </div>
 
-          <div class="input-group mb-3">
-			      <span class="input-group-text bg-success-subtle border-primary" id="">Nombre></span>
-			      <input select class="inputName pe-5 form-control border-primary" id="inputName" name="inputName" value="<?= $elmData->elemento?>">
-		      </div>
+        <div class="input-group mb-3">
+			    <span class="input-group-text bg-success-subtle border-primary" id="">Nombre></span>
+			    <input select class="inputName pe-5 form-control border-primary" id="inputName" name="inputName" value="<?= $elmData->elemento?>">
+		    </div>
 
-          <div class="input-group mb-3">	
-			      <span class="input-group-text bg-success-subtle border-primary">Talla></span>
-			      <input type="text" class="inputTalla form-control border-primary " id="inputTalla" name="inputTalla" value="<?= $elmData->tallas?>">
-		      </div> 
+        <div class="input-group mb-3">	
+			    <span class="input-group-text bg-success-subtle border-primary">Talla></span>
+			    <input type="text" class="inputTalla form-control border-primary " id="inputTalla" name="inputTalla" value="<?= $elmData->tallas?>">
+		    </div> 
 
-		      <div class="input-group mb-3">	
-			      <span class="input-group-text bg-success-subtle border-primary">Marca></span>
-			      <input type="text" class="inputMarca form-control border-primary" id="inputMarca" name="inputMarca" value="<?= $elmData->marca?>">
-		      </div>
+		    <div class="input-group mb-3">	
+			    <span class="input-group-text bg-success-subtle border-primary">Marca></span>
+			    <input type="text" class="inputMarca form-control border-primary" id="inputMarca" name="inputMarca" value="<?= $elmData->marca?>">
+		    </div>
 
-          <div class="input-group mb-3">
-			      <span class="input-group-text bg-success-subtle border-primary" id="">Color></span>
-			      <input select class="inputColor pe-5 form-control border-primary" id="inputColor" name="inputColor" value="<?= $elmData->color?>">
-		      </div>
+        <div class="input-group mb-3">
+			    <span class="input-group-text bg-success-subtle border-primary" id="">Color></span>
+			    <input select class="inputColor pe-5 form-control border-primary" id="inputColor" name="inputColor" value="<?= $elmData->color?>">
+		    </div>
 
-          <div class="input-group mb-3">
-			      <span class="input-group-text bg-success-subtle border-primary" id="">Existencias></span>
-			      <input select class="inputExists pe-5 form-control border-primary" id="inputExists" name="inputExists" value="<?= $elmData->existencias?>">
-		      </div>
-		      <div class="input-group">
-			      <span class="input-group-text bg-success-subtle border-primary">Nota:</span>
-			      <input class="inputNota form-control form-control border-primary" id="inputNota" name="inputNota" value="<?= $elmData->observacion?>">
-		      </div>
+        <div class="input-group mb-3">
+			    <span class="input-group-text bg-success-subtle border-primary" id="">Existencias></span>
+			    <input select class="inputExists pe-5 form-control border-primary" id="inputExists" name="inputExists" value="<?= $elmData->existencias?>">
+		    </div>
+		    <div class="input-group">
+			    <span class="input-group-text bg-success-subtle border-primary">Nota:</span>
+			    <input class="inputNota form-control form-control border-primary" id="inputNota" name="inputNota" value="<?= $elmData->observacion?>">
+		    </div>
 
-		      <div>
+		    <div>
 		        <input class="btn btn-warning text-white w-100 mt-2 fw-semibold shadow-sm mb-1" 
 		        name="btnUpd" type="submit" value="Actualizar">
-          </div>
+        </div>
     <?php }
     ?>
 		
-  </form>
-  </div>
+</form>
+</div>
 <!-- ↑Fin del formulario -->
 
 <!-- ------------------------------------------------------------------------------------------------------ -->

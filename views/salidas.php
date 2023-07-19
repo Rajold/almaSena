@@ -83,12 +83,12 @@ if(isset($_GET['enviar'])){
       </form>
       <br>
 
- 
+
       <table class="table table-striped table_id ">
 
-                   
-                         <thead>    
-                         <tr>
+                  
+                        <thead>    
+                        <tr>
                         <th>Nombre</th>
                         <th>Identificación</th>
                         <th>Correo</th>
@@ -96,7 +96,6 @@ if(isset($_GET['enviar'])){
                         </tr>
                         </thead>
                         <tbody>
-
                         <?php
 
 $conexion=mysqli_connect("localhost","root","","almasenadb");               
@@ -109,10 +108,10 @@ if($dato -> num_rows >0){
     
 ?>
 <tr>
-<td><a class="text-black text-uppercase text-decoration-none" href="salidasPage2.php?id=<?= $fila['id']?>"><?php echo $fila['user']; ?></a></td>
-<td><a class="text-black text-uppercase text-decoration-none" href="salidasPage2.php?id=<?= $fila['id']?>"><?php echo $fila['id']; ?></a></td>
-<td><a class="text-black text-uppercase text-decoration-none" href="salidasPage2.php?id=<?= $fila['id']?>"><?php echo $fila['email']; ?></a></td>
-<td><a class="text-black text-uppercase text-decoration-none" href="salidasPage2.php?id=<?= $fila['id']?>"><?php echo $fila['telefono']; ?></a></td>
+<td><a class="text-black text-uppercase text-decoration-none" href="salidasPage2.php?usrId=<?= $fila['user']?>"><?php echo $fila['user']; ?></a></td>
+<td><a class="text-black text-uppercase text-decoration-none" href="salidasPage2.php?usrId=<?= $fila['user']?>"><?php echo $fila['id']; ?></a></td>
+<td><a class="text-black text-uppercase text-decoration-none" href="salidasPage2.php?usrId=<?= $fila['user']?>"><?php echo $fila['email']; ?></a></td>
+<td><a class="text-black text-uppercase text-decoration-none" href="salidasPage2.php?usrId=<?= $fila['user']?>"><?php echo $fila['telefono']; ?></a></td>
 
 
 

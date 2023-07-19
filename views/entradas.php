@@ -5,7 +5,7 @@ if (empty($_SESSION['id'])) {
 }
 		include ("../controllers/dbConection.php");
 		include ("../controllers/addElements.controller.php");
-		 ?>
+		?>
 
 <!DOCTYPE html>
 <html lang="es">

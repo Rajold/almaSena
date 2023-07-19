@@ -4,6 +4,14 @@ if (empty($_SESSION['id'])) {
   header("Location:../index.php");
 }
 ?>
+
+<!-- ↓Consulta los datos del elemento cuyo id viene desde el botón editar de la vista entradas -->
+<?php
+	include ("../controllers/dbConection.php");
+	$usrId= $_GET['usrId'];
+	$selUsr= $conexion->query("SELECT * FROM usuarios where id= '$usrId'");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -24,22 +32,7 @@ if (empty($_SESSION['id'])) {
         <?php 
           echo $_SESSION["nombre"]
         ?>
-        <!-- <?php
-// $conexion=mysqli_connect("localhost","root","","almasenadb"); 
-// $where="";
-
-// if(isset($_GET['enviar'])){
-//   $busqueda = $_GET['busqueda'];
-
-
-// 	if (isset($_GET['busqueda']))
-// 	{
-// 		$where="WHERE user.correo LIKE'%".$busqueda."%' OR nombre  LIKE'%".$busqueda."%'
-//     OR telefono  LIKE'%".$busqueda."%'";
-// 	}
-  
-// }
-?> -->
+        
       </div>
 
       <div class="col-9">
@@ -72,7 +65,8 @@ if (empty($_SESSION['id'])) {
   <div class="container">
     <div class="row">
       <div class="col-10 ">
-        <H2>Relacione los elementos para la entrega</H2>
+        <H2>Relacione los elementos para entregar a <strong><?php echo $usrId ?></strong></H2>
+        <!-- <input type="text" value="<?= $_GET['usrId'] ?>"> -->
       </div>
       <div class="col ">
 <button class="btn btn-success  shadow-sm "><a class="text-decoration-none text-white"
@@ -94,9 +88,9 @@ if (empty($_SESSION['id'])) {
 
       <table class="table table-striped table_id ">
 
-                   
-                         <thead>    
-                         <tr>
+                  
+                        <thead>    
+                        <tr>
                         <!-- <th>Categoría</th> -->
                         <th>Elemento</th>
                         <th>Talla</th>
@@ -136,8 +130,8 @@ while($fila=mysqli_fetch_array($dato)){
 <!-- <td><?php echo $fila['color']; ?></td> -->
 <td><?php echo $fila['existencias']; ?></td>
 <td><?php echo $fila['observacion']; ?></a></td>
-<td><input type="text" name= "cantSol"></td>
-<td><a class="text-black text-uppercase text-decoration-none" href="salidasPage2.php?id=<?= $fila['idElemento']?>">Check</a></td>
+<td><input type="number" name="cantSol" id="cantSol"></td>
+<td><a class="text-black text-uppercase text-decoration-none" href="lista.php?id=<?= $fila['idElemento']?>">Check</a></td>
 </tr>
 
 <?php
