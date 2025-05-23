@@ -7,6 +7,8 @@ if (empty($_SESSION['id'])) {
 
 <?php
 		include ("../controllers/dbConection.php");
+		include ("../controllers/user.Delete.controller.php");
+
 		 ?>
 
 <!DOCTYPE html>
@@ -256,7 +258,7 @@ include ("../controllers/clientesCreateController.php");
         var confirmar = confirm(
           "Está apunto de eliminar un registro, esta acción no se puede deshacer. Está seguro?"
         );
-        return respuesta;
+        return confirmar;
       }
     </script>
   </body>

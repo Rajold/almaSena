@@ -8,7 +8,7 @@ session_start();
         </div>';
         } else {
                 $inputMail=               $_POST['email'];
-                $inputPass=           md5($_POST['password']);
+                $inputPass=           ($_POST['password']);
     
                 $sql=$conexion->query("SELECT * FROM usuarios WHERE email= '$inputMail' AND password= '$inputPass'");
                 if ($userData= $sql->fetch_object()) {

@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="./assets/senaGreen.png" type="image/x-icon">
     <link rel="stylesheet" href="./csss/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="./csss/generalStyles.css">
-    <title>almaSena</title>
+    <title>almaSen</title>     
 </head>
 
 <body class="d-flex justify-content-center align-items-center vh-100 bg-image"
@@ -22,7 +22,7 @@
     <div class="formCont p-5 rounded-5 text-secondary shadow" style="width: 25rem">
         <?php
         include("controllers/dbConection.php");
-        include("controllers/login.php"); 
+        include("controllers/logIn.php"); 
         ?>
         <!-- inicio formulario -->
         <form action="" method="post">
@@ -31,7 +31,7 @@
                     <img src="./assets/username-icon.svg" alt="username-icon" style="height: 1rem" />
                 </div>
                 <input class=" form-control bg-light" name="email" type="email" id="mailInput" placeholder="" />
-                <label for="mailInput" class="form-label px-5">Correo SENA</label>
+                <label for="mailInput" class="form-label px-5">Correo</label>
             </div>
 
             <div class="form-floating input-group mt-1">
